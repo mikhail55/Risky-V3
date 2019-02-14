@@ -1,5 +1,12 @@
 public class GameBoard {
-    public static void main(String[] args) {
-        System.out.println("I like smelly booty");
+    private GameCell[] provinces;
+
+    private GameLogic logic;
+
+    private Menu menu;
+
+    public GameBoard() {
     }
+
+    
 }
