@@ -1,5 +1,5 @@
 public class GameBoard {
     public static void main(String[] args) {
-        System.out.println("butts");
+        System.out.println("booty");
     }
 }
