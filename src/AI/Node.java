@@ -5,8 +5,8 @@ public class Node {
     // node function
     // output = (1/(1 + Math.pow(Math.E, (-1 * output))));
 
-    double value;
-    boolean isConstant = false;
+    private double value;
+    private boolean isConstant = false;
 
     Node() {
 

@@ -62,8 +62,8 @@ public class NeuralNet {
     public void Mutate() {
         inputToHidden.Mutate(mutationRate);
 
-        for(int i = 0; i < hiddenToHidden.length; i++) {
-            hiddenToHidden[i].Mutate(mutationRate);
+        for (Matrix hiddenMatrix : hiddenToHidden) {
+            hiddenMatrix.Mutate(mutationRate);
         }
 
         hiddenToOutput.Mutate(mutationRate);
@@ -79,8 +79,8 @@ public class NeuralNet {
      */
     public int getOutput() {
         inputToHidden.Pass();
-        for (int i = 0; i < hiddenToHidden.length; i++) {
-            hiddenToHidden[i].Pass();
+        for (Matrix hiddenMatrix : hiddenToHidden) {
+            hiddenMatrix.Pass();
         }
         hiddenToOutput.Pass();
 
@@ -104,18 +104,18 @@ public class NeuralNet {
      * constant to each node in the next layer, which would be the weight of the 'constant' nodes connections)
      */
     private void ResetNodes() {
-        for(int i = 0; i < inputNodes.length; i++) {
-            inputNodes[i].resetValue();
+        for (Node inputNode : inputNodes) {
+            inputNode.resetValue();
         }
 
-        for(int i = 0; i < hiddenNodes.length; i++) {
-            for(int n = 0; n < hiddenNodes[i].length; n++) {
-                hiddenNodes[i][n].resetValue();
+        for (Node[] hiddenLayer : hiddenNodes) {
+            for (Node hiddenNode : hiddenLayer) {
+                hiddenNode.resetValue();
             }
         }
 
-        for(int i = 0; i < outputNodes.length; i++) {
-            outputNodes[i].resetValue();
+        for (Node outputNode : outputNodes) {
+            outputNode.resetValue();
         }
     }
 }
