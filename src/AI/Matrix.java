@@ -32,6 +32,9 @@ public class Matrix {
         }
     }
 
+    /**
+     * This iterates through each connection and passes the value from the first layer of nodes to the second
+     */
     public void Pass() {
         for(int i = 0; i < matrix.length; i++) {
             for(int n = 0; n < matrix[i].length; n++) {
