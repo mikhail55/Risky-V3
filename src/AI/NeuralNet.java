@@ -11,6 +11,16 @@ public class NeuralNet {
 
     private double mutationRate;
 
+    /**
+     * This constructor creates a neural network from scratch
+     *
+     * It first creates all of the nodes in each layer, and then creates the matricies of connections between the nodes
+     * @param numInputs the number of input nodes in the network
+     * @param hiddenLayers the number of hidden layers
+     * @param numHidden the number of nodes in a hidden layer
+     * @param numOutputs the number of output nodes
+     * @param mutationRate the percent of connections that are changed each mutation
+     */
     NeuralNet(int numInputs, int hiddenLayers, int numHidden, int numOutputs, double mutationRate) {
         this.mutationRate = mutationRate;
 
@@ -36,14 +46,19 @@ public class NeuralNet {
 
         inputToHidden = new Matrix(inputNodes, hiddenNodes[0]);
 
-        hiddenToHidden = new Matrix[hiddenLayers - 1];
-        for(int i = 0; i < hiddenToHidden.length; i++) {
-            hiddenToHidden[i] = new Matrix(hiddenNodes[i], hiddenNodes[i + 1]);
+        if(hiddenLayers != 0) {
+            hiddenToHidden = new Matrix[hiddenLayers - 1];
+            for (int i = 0; i < hiddenToHidden.length; i++) {
+                hiddenToHidden[i] = new Matrix(hiddenNodes[i], hiddenNodes[i + 1]);
+            }
         }
 
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes);
     }
 
+    /**
+     * This mutates the entire network by randomizing mutationRate % of the connections between nodes
+     */
     public void Mutate() {
         inputToHidden.Mutate(mutationRate);
 
@@ -52,8 +67,16 @@ public class NeuralNet {
         }
 
         hiddenToOutput.Mutate(mutationRate);
+
+        ResetNodes();
     }
 
+    /**
+     * Push all the information in the inputs through the network, layer by layer, up to the outputs
+     *
+     * After the output has been determined, reset all the nodes
+     * @return Return whichever node had the highest output value
+     */
     public int getOutput() {
         inputToHidden.Pass();
         for (int i = 0; i < hiddenToHidden.length; i++) {
@@ -69,6 +92,30 @@ public class NeuralNet {
             }
         }
 
+        ResetNodes();
+
         return choiceNode;
+    }
+
+    /**
+     * This simply goes through each node and resets them to their default values.
+     *
+     * The default value is 0, save for a few nodes that will remain at a value of 1 no matter what (this is to give a
+     * constant to each node in the next layer, which would be the weight of the 'constant' nodes connections)
+     */
+    private void ResetNodes() {
+        for(int i = 0; i < inputNodes.length; i++) {
+            inputNodes[i].resetValue();
+        }
+
+        for(int i = 0; i < hiddenNodes.length; i++) {
+            for(int n = 0; n < hiddenNodes[i].length; n++) {
+                hiddenNodes[i][n].resetValue();
+            }
+        }
+
+        for(int i = 0; i < outputNodes.length; i++) {
+            outputNodes[i].resetValue();
+        }
     }
 }
