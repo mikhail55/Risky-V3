@@ -22,7 +22,9 @@ public class Node {
     }
 
     public void updateValue(double newValue) {
-        value += newValue;
+        if(!isConstant) {
+            value += newValue;
+        }
     }
 
     public void resetValue() {
