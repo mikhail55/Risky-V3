@@ -15,7 +15,7 @@ public class Node {
         return value;
     }
 
-    public void updateValue() {
-
+    public void updateValue(double newValue) {
+        value += newValue;
     }
 }
