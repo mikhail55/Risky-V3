@@ -12,22 +12,22 @@ public class Node {
 
     }
 
-    public void setConstant(boolean bool) {
+    void setConstant(boolean bool) {
         isConstant = bool;
         value = 1;
     }
 
-    public double getValue() {
+    double getValue() {
         return (1/(1 + Math.pow(Math.E, (-1 * value))));
     }
 
-    public void updateValue(double newValue) {
+    void updateValue(double newValue) {
         if(!isConstant) {
             value += newValue;
         }
     }
 
-    public void resetValue() {
+    void resetValue() {
         value = 0;
 
         if(isConstant) {
