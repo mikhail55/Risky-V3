@@ -1,9 +1,13 @@
 package AI;
 
+import java.util.Random;
+
 public class Connection {
     private double weight;
     private Node start;
     private Node end;
+
+    private Random rand = new Random();
 
     Connection(Node start, Node end) {
         this.start = start;
@@ -17,15 +21,17 @@ public class Connection {
         this.weight = weight;
     }
 
-    public void newWeight() {
-
+    void newWeight() {
+        weight = (rand.nextDouble() * 2) - 1;
     }
 
-    public double getValue() {
+    double getValue() {
         return start.getValue() * weight;
     }
 
-    public Node getEnd() {
+    double getWeight() {return weight;}
+
+    Node getEnd() {
         return end;
     }
 }
