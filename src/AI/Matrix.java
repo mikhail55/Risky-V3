@@ -2,7 +2,7 @@ package AI;
 
 import java.util.Random;
 
-public class Matrix {
+class Matrix {
     private Connection[][] matrix;
     private Random rand = new Random();
 

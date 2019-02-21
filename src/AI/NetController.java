@@ -1,13 +1,13 @@
 package AI;
 
 public class NetController {
-    NeuralNet neuralNet;
+    private NeuralNet neuralNet;
 
-    int numinputs = 10;
-    int hiddenLayers = 2;
-    int numHidden = 14;
-    int numOutputs = 2;
-    double mutationRate = 0.1;
+    private int numinputs = 10;
+    private int hiddenLayers = 2;
+    private int numHidden = 14;
+    private int numOutputs = 2;
+    private double mutationRate = 0.1;
 
     NetController() {
         neuralNet = new NeuralNet(numinputs, hiddenLayers, numHidden, numOutputs, mutationRate);
@@ -15,6 +15,7 @@ public class NetController {
 
     NetController(NetController parent) {
         neuralNet = new NeuralNet(parent.neuralNet);
+        neuralNet.Mutate();
     }
 
     boolean[] getMove() {

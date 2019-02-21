@@ -2,7 +2,7 @@ package AI;
 
 import java.util.Random;
 
-public class Connection {
+class Connection {
     private double weight;
     private Node start;
     private Node end;

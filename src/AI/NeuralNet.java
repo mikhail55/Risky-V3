@@ -1,6 +1,6 @@
 package AI;
 
-public class NeuralNet {
+class NeuralNet {
     private Node[] inputNodes;
     private Node[][] hiddenNodes;
     private Node[] outputNodes;
@@ -86,7 +86,7 @@ public class NeuralNet {
     /**
      * This mutates the entire network by randomizing mutationRate % of the connections between nodes
      */
-    public void Mutate() {
+    void Mutate() {
         inputToHidden.Mutate(mutationRate);
 
         for (Matrix hiddenMatrix : hiddenToHidden) {
@@ -104,7 +104,7 @@ public class NeuralNet {
      * After the output has been determined, reset all the nodes
      * @return Return whichever node had the highest output value
      */
-    public int getOutput() {
+    int getOutput() {
         inputToHidden.Pass();
         for(int i = 0; i < hiddenToHidden.length; i++) {
             for (Node hiddenNode : hiddenNodes[i]) {
