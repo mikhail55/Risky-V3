@@ -79,10 +79,19 @@ public class NeuralNet {
      */
     public int getOutput() {
         inputToHidden.Pass();
-        for (Matrix hiddenMatrix : hiddenToHidden) {
-            hiddenMatrix.Pass();
+        for(int i = 0; i < hiddenToHidden.length; i++) {
+            for (Node hiddenNode : hiddenNodes[i]) {
+                hiddenNode.finalizeValue();
+            }
+            hiddenToHidden[i].Pass();
+        }
+        for (Node hiddenNode : hiddenNodes[hiddenNodes.length - 1]) {
+            hiddenNode.finalizeValue();
         }
         hiddenToOutput.Pass();
+        for (Node outNode : outputNodes) {
+            outNode.finalizeValue();
+        }
 
         int choiceNode = 0;
 

@@ -18,7 +18,11 @@ public class Node {
     }
 
     double getValue() {
-        return (1/(1 + Math.pow(Math.E, (-1 * value))));
+        return value;
+    }
+
+    void finalizeValue() {
+        value = (1/(1 + Math.pow(Math.E, (-1 * value))));
     }
 
     void updateValue(double newValue) {
