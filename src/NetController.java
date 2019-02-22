@@ -58,7 +58,6 @@ public class NetController {
         double[] inputs = new double[numinputs];
 
         inputs[0] = owner.ordinal() + 1;
-        in
 
         return inputs;
     }
