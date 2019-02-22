@@ -1,6 +1,6 @@
 package AI;
 
-public class Node {
+class Node {
 
     // node function
     // output = (1/(1 + Math.pow(Math.E, (-1 * output))));
