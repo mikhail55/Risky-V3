@@ -5,8 +5,11 @@ public class Player {
 
     GameCell lastTileChecked;
 
-    public Player(GameCell.Owner player) {
+    GameLogic logic;
+
+    public Player(GameCell.Owner player, GameLogic logic) {
         team = player;
+        this.logic = logic;
     }
 
     public boolean checkTile(GameCell x, GameCell y){
@@ -16,6 +19,18 @@ public class Player {
         else{
             return false;
         }
+    }
+
+    public void move(GameCell from, GameCell to, int numTroops){
+        logic.move(from, to, numTroops);
+    }
+
+    public void attack(GameCell attacker, GameCell defender, int numTroops){
+        logic.attack(attacker, defender, numTroops);
+    }
+
+    public  void deploy(GameCell selectedCell){
+        logic.deploy(selectedCell);
     }
 
     public GameCell getLastTileChecked() {
