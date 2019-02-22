@@ -1,3 +1,5 @@
+package MainGame;
+
 import javax.swing.*;
 
 public class GameDriver {
@@ -12,9 +14,8 @@ public class GameDriver {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        while (true){
-            board.repaint();
-        }
+
+        board.repaint();
 
     }
 }

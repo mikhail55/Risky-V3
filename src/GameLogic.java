@@ -1,17 +1,28 @@
+
 public class GameLogic {
 
     private GameCell[][] board;
 
-    private GameCell.Owner currentPlayer;
+    private Player currentPlayer;
 
-    private GameCell.Owner[] players;
+    private Player[] players;
 
     private RiskyFileReader fileReader;
 
-    public GameLogic() {
+    public GameLogic(GameCell[][] madeBoard, Player[] players) {
+        board = madeBoard;
+
+        this.players = players;
+
+        currentPlayer = players[0];
     }
 
     public void move(GameCell from, GameCell to, int numTroops){
+        if (currentPlayer.checkTile(from, to)){
+            from.setAddedTroops(-numTroops);
+
+            to.setAddedTroops(numTroops);
+        }
     }
 
     public void attack(GameCell attacker, GameCell defender, int numTroops){

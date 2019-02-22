@@ -1,3 +1,4 @@
+
 public class GameCell {
 
     private int numTroops;
