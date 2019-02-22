@@ -23,8 +23,13 @@ public class Player {
         }
     }
 
+    //Checks which tile was clicked and decides what to do
     public void tileClicked(GameCell clicked){
 
+    }
+
+    public void endTurn(){
+        logic.endTurn();
     }
 
     public GameCell getLastTileChecked() {
