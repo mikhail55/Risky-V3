@@ -18,7 +18,7 @@ public class GameLogic {
     }
 
     public void move(GameCell from, GameCell to, int numTroops){
-        if (currentPlayer.checkTile(from, to)){
+        if (currentPlayer.checkTile(from, to) && checkAdjacent(from, to)){
             from.setAddedTroops(-numTroops);
 
             to.setAddedTroops(numTroops);
@@ -26,7 +26,9 @@ public class GameLogic {
     }
 
     public void attack(GameCell attacker, GameCell defender, int numTroops){
+        if (!currentPlayer.checkTile(attacker, defender) && checkAdjacent(attacker, defender)){
 
+        }
     }
 
     public  void deploy(GameCell selectedCell){
@@ -47,5 +49,9 @@ public class GameLogic {
 
     public GameCell[][] getBoard() {
         return board;
+    }
+
+    public Player[] getPlayers() {
+        return players;
     }
 }
