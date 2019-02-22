@@ -1,6 +1,6 @@
 package AI;
 
-class NeuralNet {
+public class NeuralNet {
     private Node[] inputNodes;
     private Node[][] hiddenNodes;
     private Node[] outputNodes;
@@ -21,7 +21,7 @@ class NeuralNet {
      * @param numOutputs the number of output nodes
      * @param mutationRate the percent of connections that are changed each mutation
      */
-    NeuralNet(int numInputs, int hiddenLayers, int numHidden, int numOutputs, double mutationRate) {
+    public NeuralNet(int numInputs, int hiddenLayers, int numHidden, int numOutputs, double mutationRate) {
         this.mutationRate = mutationRate;
 
         inputNodes = new Node[numInputs + 1];
@@ -56,7 +56,7 @@ class NeuralNet {
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes);
     }
 
-    NeuralNet(NeuralNet parent) {
+    public NeuralNet(NeuralNet parent) {
         this.mutationRate = parent.mutationRate;
 
         this.inputNodes = parent.inputNodes;
@@ -86,7 +86,7 @@ class NeuralNet {
     /**
      * This mutates the entire network by randomizing mutationRate % of the connections between nodes
      */
-    void Mutate() {
+    public void Mutate() {
         inputToHidden.Mutate(mutationRate);
 
         for (Matrix hiddenMatrix : hiddenToHidden) {
@@ -104,7 +104,7 @@ class NeuralNet {
      * After the output has been determined, reset all the nodes
      * @return Return whichever node had the highest output value
      */
-    int getOutput() {
+    public int getOutput() {
         inputToHidden.Pass();
         for(int i = 0; i < hiddenToHidden.length; i++) {
             for (Node hiddenNode : hiddenNodes[i]) {

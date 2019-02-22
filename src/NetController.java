@@ -1,4 +1,4 @@
-package AI;
+import AI.*;
 
 public class NetController {
     private NeuralNet neuralNet;

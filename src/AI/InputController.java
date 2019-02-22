@@ -1,5 +1,5 @@
 package AI;
 
-public class InputController {
+class InputController {
 
 }
