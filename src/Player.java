@@ -7,6 +7,8 @@ public class Player {
 
     GameLogic logic;
 
+    int troopsPerTurn = 0;
+
     public Player(GameCell.Owner player, GameLogic logic) {
         team = player;
         this.logic = logic;
@@ -35,6 +37,10 @@ public class Player {
 
     public GameCell getLastTileChecked() {
         return lastTileChecked;
+    }
+
+    public int getTroopsPerTurn() {
+        return troopsPerTurn;
     }
 
     public void setLastTileChecked(GameCell lastTileChecked) {

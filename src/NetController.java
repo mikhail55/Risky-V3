@@ -14,6 +14,8 @@ public class NetController {
     // 323 outputs : select a tile
     // 1 output : end turn
 
+    private int numCells = 323;
+
     private int numinputs = 651;
     private int hiddenLayers = 2;
     private int numHidden = 675;
@@ -21,17 +23,28 @@ public class NetController {
     private double mutationRate = 0.1;
 
     private Player player;
+    private GameCell.Owner owner;
+    private GameLogic logic;
 
-    NetController() {
+    NetController(GameCell.Owner owner, GameLogic logic) {
         neuralNet = new NeuralNet(numinputs, hiddenLayers, numHidden, numOutputs, mutationRate);
+        player = new Player(owner, logic);
+
+        this.owner = owner;
+        this.logic = logic;
     }
 
     NetController(NetController parent) {
         neuralNet = new NeuralNet(parent.neuralNet);
         neuralNet.Mutate();
+        player = new Player(parent.owner, parent.logic);
+
+        this.owner = parent.owner;
     }
 
     private boolean[] getMove() {
+        neuralNet.setInputs(getInputs());
+
         boolean[] moveChosen = new boolean[numOutputs];
         for (boolean move : moveChosen) {
             move = false;
@@ -39,5 +52,18 @@ public class NetController {
         moveChosen[neuralNet.getOutput()] = true;
 
         return moveChosen;
+    }
+
+    private double[] getInputs() {
+        double[] inputs = new double[numinputs];
+
+        inputs[0] = owner.ordinal() + 1;
+        in
+
+        return inputs;
+    }
+
+    public void turn() {
+
     }
 }

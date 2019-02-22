@@ -133,6 +133,12 @@ public class NeuralNet {
         return choiceNode;
     }
 
+    public void setInputs(double[] inputs) {
+        for(int i = 0; i < inputs.length; i++) {
+            inputNodes[i].setValue(inputs[i]);
+        }
+    }
+
     /**
      * This simply goes through each node and resets them to their default values.
      *
