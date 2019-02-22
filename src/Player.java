@@ -23,16 +23,8 @@ public class Player {
         }
     }
 
-    public void move(GameCell from, GameCell to, int numTroops){
-        logic.move(from, to, numTroops);
-    }
+    public void tileClicked(GameCell clicked){
 
-    public void attack(GameCell attacker, GameCell defender, int numTroops){
-        logic.attack(attacker, defender, numTroops);
-    }
-
-    public  void deploy(GameCell selectedCell){
-        logic.deploy(selectedCell);
     }
 
     public GameCell getLastTileChecked() {
