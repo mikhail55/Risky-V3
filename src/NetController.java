@@ -57,17 +57,28 @@ public class NetController {
     private double[] getInputs() {
         double[] inputs = new double[numInputs];
 
-        inputs[0] = owner.ordinal() + 1;
-        for (int i = 1; i < 4; i++) {
-            inputs[i] = logic.getPlayers()[i - 1].getTroopsPerTurn();
+        int posInInput = 0;
+
+        inputs[posInInput] = owner.ordinal() + 1;
+        posInInput ++;
+
+        for (int i = 0; i < 3; i++) {
+            inputs[posInInput] = logic.getPlayers()[i].getTroopsPerTurn();
+            posInInput++;
         }
 
-        for(int i = 5; i < numCells + 5; i++) {
-
+        for(int i = 0; i < logic.getBoard().length; i++) {
+            for(int n = 0; n < logic.getBoard()[i].length; n++) {
+                inputs[posInInput] = logic.getBoard()[i][n].getOwner().ordinal();
+                posInInput ++;
+            }
         }
 
-        for(int i = numCells + 5; i < numInputs; i++) {
-
+        for(int i = 0; i < logic.getBoard().length; i++) {
+            for(int n = 0; n < logic.getBoard()[i].length; n++) {
+                inputs[posInInput] = logic.getBoard()[i][n].getNumTroops();
+                posInInput ++;
+            }
         }
 
         return inputs;
@@ -78,10 +89,24 @@ public class NetController {
 
         for(int i = 0; i < moves.length - 1; i++) {
             if(moves[i]) {
+                boolean rowFound = false;
+                int cellRow = 0;
+                int cellPosInRow;
 
+                while(!rowFound) {
+                    if(((cellRow + 1) * logic.getBoard()[0].length - 1) < i) {
+                        cellRow++;
+                    } else {
+                        rowFound = true;
+                    }
+                }
+
+                cellPosInRow = i - (cellRow * logic.getBoard()[0].length);
+
+                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow]);
             }
         }
+        player.endTurn();
 
-        
     }
 }
