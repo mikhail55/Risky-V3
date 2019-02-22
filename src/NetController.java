@@ -16,7 +16,7 @@ public class NetController {
 
     private int numCells = 323;
 
-    private int numinputs = 651;
+    private int numInputs = 651;
     private int hiddenLayers = 2;
     private int numHidden = 675;
     private int numOutputs = 323;
@@ -27,7 +27,7 @@ public class NetController {
     private GameLogic logic;
 
     NetController(GameCell.Owner owner, GameLogic logic) {
-        neuralNet = new NeuralNet(numinputs, hiddenLayers, numHidden, numOutputs, mutationRate);
+        neuralNet = new NeuralNet(numInputs, hiddenLayers, numHidden, numOutputs, mutationRate);
         player = new Player(owner, logic);
 
         this.owner = owner;
@@ -55,14 +55,33 @@ public class NetController {
     }
 
     private double[] getInputs() {
-        double[] inputs = new double[numinputs];
+        double[] inputs = new double[numInputs];
 
         inputs[0] = owner.ordinal() + 1;
+        for (int i = 1; i < 4; i++) {
+            inputs[i] = logic.getPlayers()[i - 1].getTroopsPerTurn();
+        }
+
+        for(int i = 5; i < numCells + 5; i++) {
+
+        }
+
+        for(int i = numCells + 5; i < numInputs; i++) {
+
+        }
 
         return inputs;
     }
 
     public void turn() {
+        boolean[] moves = getMove();
 
+        for(int i = 0; i < moves.length - 1; i++) {
+            if(moves[i]) {
+
+            }
+        }
+
+        
     }
 }

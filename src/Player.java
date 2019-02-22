@@ -7,7 +7,7 @@ public class Player {
 
     GameLogic logic;
 
-    int troopsPerTurn = 0;
+    private int troopsPerTurn = 0;
 
     public Player(GameCell.Owner player, GameLogic logic) {
         team = player;
