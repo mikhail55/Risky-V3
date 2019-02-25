@@ -7,6 +7,8 @@ public class Player {
 
     GameLogic logic;
 
+    private int deployableTroops;
+
     private int troopsPerTurn = 0;
 
     public Player(GameCell.Owner player, GameLogic logic) {
@@ -14,6 +16,7 @@ public class Player {
         this.logic = logic;
     }
 
+    //checks if the owners of the tiles are the same
     public boolean checkTile(GameCell x, GameCell y){
         if (x.getOwner() == y.getOwner()){
             return true;
@@ -24,8 +27,25 @@ public class Player {
     }
 
     //Checks which tile was clicked and decides what to do
-    public void tileClicked(GameCell clicked){
-
+    public void tileClicked(GameCell clicked, int numTroops){
+        if (!(lastTileChecked == null)){
+            //clicked the tile with the same owner = move
+            if (lastTileChecked.getOwner() == clicked.getOwner()){
+                logic.move(getLastTileChecked(), clicked, numTroops);
+                //reset the selected tile
+                lastTileChecked = null;
+            }
+            //clicked tile with a different owner = attack
+            else if (!(lastTileChecked.getOwner() == clicked.getOwner())){
+                logic.attack(lastTileChecked, clicked, numTroops);
+                lastTileChecked = null;
+            }
+            //clicked the same tile twice = deploy
+            else if (lastTileChecked == clicked){
+                logic.deploy(clicked);
+                lastTileChecked = null;
+            }
+        } else {lastTileChecked = clicked;}
     }
 
     public void endTurn(){
@@ -34,6 +54,14 @@ public class Player {
 
     public GameCell getLastTileChecked() {
         return lastTileChecked;
+    }
+
+    public int getDeployableTroops() {
+        return deployableTroops;
+    }
+
+    public void setDeployableTroops(int deployableTroops) {
+        this.deployableTroops = deployableTroops;
     }
 
     public int getTroopsPerTurn() {

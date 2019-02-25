@@ -1,3 +1,4 @@
+import java.awt.*;
 
 public class GameCell {
 
@@ -9,10 +10,19 @@ public class GameCell {
     }
     private Owner owner;
     private Owner ownerEndTurn;
+    private Point coordinates;
 
     private boolean isWater;
 
     public GameCell() {
+        ownerEndTurn = owner;
+    }
+
+    public void update(){
+        owner = ownerEndTurn;
+
+        numTroops += addedTroops;
+        addedTroops = 0;
     }
 
     public int getNumTroops() {
@@ -37,5 +47,9 @@ public class GameCell {
 
     public void setOwnerEndTurn(Owner ownerEndTurn) {
         this.ownerEndTurn = ownerEndTurn;
+    }
+
+    public Point getCoordinates() {
+        return coordinates;
     }
 }

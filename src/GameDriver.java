@@ -1,4 +1,3 @@
-package MainGame;
 
 import javax.swing.*;
 
