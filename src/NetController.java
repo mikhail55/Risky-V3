@@ -103,7 +103,7 @@ public class NetController {
 
                 cellPosInRow = i - (cellRow * logic.getBoard()[0].length);
 
-                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow]);
+                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow], 0);
             }
         }
         player.endTurn();
