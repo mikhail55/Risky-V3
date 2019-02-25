@@ -103,7 +103,9 @@ public class NetController {
 
                 cellPosInRow = i - (cellRow * logic.getBoard()[0].length);
 
-                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow], 0);
+                ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'
+                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow], 0); ////////// NUMTROOPS SHOULDN'T BE A CONSTANT
+                ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'
             }
         }
         player.endTurn();
