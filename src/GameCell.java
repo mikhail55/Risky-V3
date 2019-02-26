@@ -1,3 +1,7 @@
+/**
+ * Header this is a header
+ */
+
 import java.awt.*;
 
 public class GameCell {
