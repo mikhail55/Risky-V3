@@ -2,6 +2,9 @@ package AI;
 
 import java.util.Random;
 
+/**
+ * @author TylerWilson
+ */
 class Matrix {
     private Connection[][] matrix;
     private Random rand = new Random();

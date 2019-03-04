@@ -1,5 +1,8 @@
 package AI;
 
+/**
+ * @author Tyler Wilson
+ */
 public class NeuralNet {
     private Node[] inputNodes;
     private Node[][] hiddenNodes;

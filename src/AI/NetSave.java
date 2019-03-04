@@ -6,6 +6,9 @@ import java.io.FileWriter;
 import java.io.PrintWriter;
 import java.util.Scanner;
 
+/**
+ * @author TylerWilson
+ */
 class NetSave {
 
     private Scanner fileInput;

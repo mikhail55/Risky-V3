@@ -1,5 +1,8 @@
 import AI.*;
 
+/**
+ * @author TylerWilson
+ */
 public class NetController {
     private NeuralNet neuralNet;
     private InputController inputController;

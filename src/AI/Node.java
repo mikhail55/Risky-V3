@@ -1,5 +1,8 @@
 package AI;
 
+/**
+ * @author TylerWilson
+ */
 class Node {
 
     // node function

@@ -2,6 +2,9 @@ package AI;
 
 import java.util.Random;
 
+/**
+ * @author TylerWilson
+ */
 class Connection {
     private double weight;
     private Node start;
