@@ -203,6 +203,19 @@ public class NeuralNet {
         }
     }
 
+    public double[][][] getWeights() {
+        double[][][] weights;
+
+        weights = new double[hiddenNodes.length + 1][][];
+        weights[0] = inputToHidden.getWeights();
+        for(int i = 0; i < hiddenToHidden.length; i++) {
+            weights[i + 1] = hiddenToHidden[i].getWeights();
+        }
+        weights[weights.length - 1] = hiddenToOutput.getWeights();
+
+        return weights;
+    }
+
     /**
      * This simply goes through each node and resets them to their default values.
      *

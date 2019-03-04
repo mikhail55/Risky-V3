@@ -9,15 +9,15 @@ import java.util.Scanner;
 /**
  * @author TylerWilson
  */
-class NetSave {
+public class NetSave {
 
     private Scanner fileInput;
 
-    NetSave() { }
+    public NetSave() { }
 
     // I'M SO SORRY I HATE THE SCARY ARRAY TOO
-    int[][][][] readNetFile(String fileName) {
-        int[][][][] weights = new int[0][0][0][0];
+    public double[][][][] readNetFile(String fileName) {
+        double[][][][] weights = new double[0][0][0][0];
 
         try {
 
@@ -26,7 +26,7 @@ class NetSave {
 
             fileInput.useDelimiter("ø");
 
-            weights = new int[Integer.parseInt(fileInput.next())][][][];
+            weights = new double[Integer.parseInt(fileInput.next())][][][];
             fileInput.next();
 
             // First layer is which network
@@ -34,13 +34,13 @@ class NetSave {
             // Third layer is which node
             // Fourth layer is each weight
             for(int k = 0; k < weights.length; k++) {
-                weights[k] = new int[Integer.parseInt(fileInput.next())][][];
+                weights[k] = new double[Integer.parseInt(fileInput.next())][][];
                 for (int i = 0; i < weights[k].length; i++) {
-                    weights[k][i] = new int[Integer.parseInt(fileInput.next())][];
+                    weights[k][i] = new double[Integer.parseInt(fileInput.next())][];
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        weights[k][i][n] = new int[Integer.parseInt(fileInput.next())];
+                        weights[k][i][n] = new double[Integer.parseInt(fileInput.next())];
                         for (int j = 0; j < weights[k][i][n].length; j++) {
-                            weights[k][i][n][j] = Integer.parseInt(fileInput.next());
+                            weights[k][i][n][j] = Double.parseDouble(fileInput.next());
                         }
                     }
 
@@ -63,7 +63,7 @@ class NetSave {
         return weights;
     }
 
-    void saveFile(String fileName, int[][][][] weights) {
+    public void saveFile(String fileName, double[][][][] weights) {
         try {
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
@@ -78,7 +78,6 @@ class NetSave {
                 for (int i = 0; i < weights[k].length; i++) {
                     outFile.print(weights[k][i].length + "ø");
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        weights[k][i][n] = new int[Integer.parseInt(fileInput.next())];
                         outFile.print(weights[k][i][n].length + "ø");
                         for (int j = 0; j < weights[k][i][n].length; j++) {
                             outFile.print(weights[k][i][n][j] + "ø");

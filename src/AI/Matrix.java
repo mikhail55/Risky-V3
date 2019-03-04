@@ -69,4 +69,17 @@ class Matrix {
             }
         }
     }
+
+    double[][] getWeights() {
+        double[][] weights = new double[matrix.length][];
+
+        for(int i = 0; i < weights.length; i++) {
+            weights[i] = new double[matrix[i].length];
+            for(int n = 0; n < weights[i][n]; i ++) {
+                weights[i][n] = matrix[i][n].getWeight();
+            }
+        }
+
+        return weights;
+    }
 }

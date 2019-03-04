@@ -125,4 +125,8 @@ public class NetController {
         player.endTurn();
 
     }
+
+    public double[][][] save() {
+        return neuralNet.getWeights();
+    }
 }
