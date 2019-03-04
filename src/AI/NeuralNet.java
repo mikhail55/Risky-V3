@@ -171,6 +171,32 @@ public class NeuralNet {
         return choiceNode;
     }
 
+    public int getNumTroops() {
+        inputToHidden.Pass();
+        for(int i = 0; i < hiddenToHidden.length; i++) {
+            for (Node hiddenNode : hiddenNodes[i]) {
+                hiddenNode.finalizeValue();
+            }
+            hiddenToHidden[i].Pass();
+        }
+        for (Node hiddenNode : hiddenNodes[hiddenNodes.length - 1]) {
+            hiddenNode.finalizeValue();
+        }
+        hiddenToOutput.Pass();
+
+        int numTroops = 0;
+
+        for(int i = 1; i < outputNodes.length; i++) {
+            if(outputNodes[i].getValue() > numTroops) {
+                numTroops = i;
+            }
+        }
+
+        ResetNodes();
+
+        return numTroops;
+    }
+
     public void setInputs(double[] inputs) {
         for(int i = 0; i < inputs.length; i++) {
             inputNodes[i].setValue(inputs[i]);

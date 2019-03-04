@@ -13,16 +13,19 @@ public class NetController {
     // 4 inputs : How many troops each player gets per turn
     // 323 inputs : Who owns which cell
     // 323 inputs : How many troops on a cell
+    // 323 inputs : which tile is selected
+    // 1 input : is selecting the number of troops?
 
     // 323 outputs : select a tile
+    // 1 output : getNumTroops
     // 1 output : end turn
 
     private int numCells = 323;
 
-    private int numInputs = 651;
+    private int numInputs = 975;
     private int hiddenLayers = 2;
-    private int numHidden = 675;
-    private int numOutputs = 323;
+    private int numHidden = 1000;
+    private int numOutputs = 325;
     private double mutationRate = 0.1;
 
     private Player player;
@@ -114,9 +117,9 @@ public class NetController {
 
                 cellPosInRow = i - (cellRow * logic.getBoard()[0].length);
 
-                ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'
-                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow], 0); ////////// NUMTROOPS SHOULDN'T BE A CONSTANT
-                ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'T BE A CONSTANT ////////// NUMTROOPS SHOULDN'
+                int numTroops = neuralNet.getNumTroops();
+
+                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow], numTroops);
             }
         }
         player.endTurn();
