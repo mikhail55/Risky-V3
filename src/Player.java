@@ -1,3 +1,4 @@
+import javax.swing.*;
 
 public class Player {
 
@@ -24,6 +25,29 @@ public class Player {
         else{
             return false;
         }
+    }
+
+    /**
+     * @author Tyler Wilson
+     */
+    public int getNumTroops() {
+        int numTroops = 1;
+        boolean done = false;
+
+        while (!done) {
+            done = true;
+            try {
+                numTroops = Integer.parseInt(JOptionPane.showInputDialog("How many troops would you like to use?"));
+            } catch (Exception e) {
+                done = false;
+            }
+
+            if(numTroops < 0) {
+                done = false;
+            }
+        }
+
+        return numTroops;
     }
 
     //Checks which tile was clicked and decides what to do
