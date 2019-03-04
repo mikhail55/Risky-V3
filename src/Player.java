@@ -30,7 +30,7 @@ public class Player {
     /**
      * @author Tyler Wilson
      */
-    public int getNumTroops() {
+    private int getNumTroops() {
         int numTroops = 1;
         boolean done = false;
 
@@ -61,6 +61,29 @@ public class Player {
             }
             //clicked tile with a different owner = attack
             else if (!(lastTileChecked.getOwner() == clicked.getOwner())){
+                logic.attack(lastTileChecked, clicked, numTroops);
+                lastTileChecked = null;
+            }
+            //clicked the same tile twice = deploy
+            else if (lastTileChecked == clicked){
+                logic.deploy(clicked);
+                lastTileChecked = null;
+            }
+        } else {lastTileChecked = clicked;}
+    }
+
+    public void tileClicked(GameCell clicked){
+        if (!(lastTileChecked == null)){
+            //clicked the tile with the same owner = move
+            if (lastTileChecked.getOwner() == clicked.getOwner()){
+                int numTroops = getNumTroops();
+                logic.move(getLastTileChecked(), clicked, numTroops);
+                //reset the selected tile
+                lastTileChecked = null;
+            }
+            //clicked tile with a different owner = attack
+            else if (!(lastTileChecked.getOwner() == clicked.getOwner())){
+                int numTroops = getNumTroops();
                 logic.attack(lastTileChecked, clicked, numTroops);
                 lastTileChecked = null;
             }
