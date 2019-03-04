@@ -42,6 +42,14 @@ public class NetController {
         this.owner = parent.owner;
     }
 
+    NetController(int[][][] weights, GameCell.Owner owner, GameLogic logic) {
+        neuralNet = new NeuralNet(weights);
+        neuralNet.Mutate();
+        player = new Player(owner, logic);
+
+        this.owner = owner;
+    }
+
     private boolean[] getMove() {
         neuralNet.setInputs(getInputs());
 

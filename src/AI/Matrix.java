@@ -26,6 +26,16 @@ class Matrix {
         }
     }
 
+    Matrix(Node[] fromLayer, Node[] toLayer, int[][] weightCopy) {
+        matrix = new Connection[fromLayer.length][toLayer.length];
+
+        for(int i = 0; i < matrix.length; i++) {
+            for(int n = 0; n < matrix[i].length; n++) {
+                matrix[i][n] = new Connection(fromLayer[i], toLayer[n], weightCopy[i][n]);
+            }
+        }
+    }
+
     /**
      * The mutation rate determines what percent of connections should be mutated
      * It uses an RNG to determine which connections are mutated

@@ -83,6 +83,41 @@ public class NeuralNet {
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes, parent.hiddenToOutput.getConnections());
     }
 
+    public NeuralNet(int[][][] weights) {
+        this.mutationRate = mutationRate;
+
+        inputNodes = new Node[weights[0].length];
+        hiddenNodes = new Node[weights.length - 2][weights[1].length];
+        outputNodes = new Node[weights[weights.length - 1][0].length];
+
+        for (int i = 0; i < inputNodes.length; i++) {
+            inputNodes[i] = new Node();
+        }
+        inputNodes[inputNodes.length - 1].setConstant(true);
+
+        for (int i = 0; i < hiddenNodes.length; i++) {
+            for (int n = 0; n < hiddenNodes[i].length; n++) {
+                hiddenNodes[i][n] = new Node();
+            }
+            hiddenNodes[i][hiddenNodes[i].length - 1].setConstant(true);
+        }
+
+        for(int i = 0; i < outputNodes.length; i++) {
+            outputNodes[i] = new Node();
+        }
+
+        inputToHidden = new Matrix(inputNodes, hiddenNodes[0], weights[0]);
+
+        if(hiddenNodes.length > 0) {
+            hiddenToHidden = new Matrix[hiddenNodes.length - 1];
+            for (int i = 0; i < hiddenToHidden.length; i++) {
+                hiddenToHidden[i] = new Matrix(hiddenNodes[i], hiddenNodes[i + 1], weights[i + 1]);
+            }
+        }
+
+        hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes, weights[weights.length - 1]);
+    }
+
     /**
      * This mutates the entire network by randomizing mutationRate % of the connections between nodes
      */
