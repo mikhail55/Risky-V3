@@ -6,7 +6,7 @@ import java.util.Random;
  * @author TylerWilson
  */
 class Connection {
-    private double weight;
+    private float weight;
     private Node start;
     private Node end;
 
@@ -18,21 +18,21 @@ class Connection {
         newWeight();
     }
 
-    Connection(Node start, Node end, double weight) {
+    Connection(Node start, Node end, float weight) {
         this.start = start;
         this.end = end;
         this.weight = weight;
     }
 
     void newWeight() {
-        weight = (rand.nextDouble() * 2) - 1;
+        weight = (float) (rand.nextDouble() * 2) - 1;
     }
 
-    double getValue() {
+    float getValue() {
         return start.getValue() * weight;
     }
 
-    double getWeight() {return weight;}
+    float getWeight() {return weight;}
 
     Node getEnd() {
         return end;

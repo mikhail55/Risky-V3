@@ -32,7 +32,7 @@ public class NetController {
     private int numHidden = 6;
     private int numOutputs = 4;
 
-    private double mutationRate = 0.1;
+    private float mutationRate = (float) 0.1;
 
     private Player player;
     private GameCell.Owner owner;
@@ -45,7 +45,7 @@ public class NetController {
         neuralNet = new NeuralNet(numInputs, hiddenLayers, numHidden, numOutputs, mutationRate);
     }
 
-    NetController(double[][][] weights) {
+    NetController(float[][][] weights) {
         neuralNet = new NeuralNet(weights);
     }
 
@@ -69,7 +69,7 @@ public class NetController {
         this.owner = parent.owner;
     }
 
-    NetController(double[][][] weights, GameCell.Owner owner, GameLogic logic) {
+    NetController(float[][][] weights, GameCell.Owner owner, GameLogic logic) {
         neuralNet = new NeuralNet(weights);
         player = new Player(owner, logic);
 
@@ -88,8 +88,8 @@ public class NetController {
         return moveChosen;
     }
 
-    private double[] getInputs() {
-        double[] inputs = new double[numInputs];
+    private float[] getInputs() {
+        float[] inputs = new float[numInputs];
 
         int posInInput = 0;
 
@@ -146,7 +146,7 @@ public class NetController {
 
     }
 
-    public double[][][] save() {
+    public float[][][] save() {
         return neuralNet.getWeights();
     }
 }

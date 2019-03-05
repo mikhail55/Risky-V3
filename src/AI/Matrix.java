@@ -29,7 +29,7 @@ class Matrix {
         }
     }
 
-    Matrix(Node[] fromLayer, Node[] toLayer, double[][] weightCopy) {
+    Matrix(Node[] fromLayer, Node[] toLayer, float[][] weightCopy) {
         matrix = new Connection[fromLayer.length][toLayer.length];
 
         for(int i = 0; i < matrix.length; i++) {
@@ -45,10 +45,10 @@ class Matrix {
      * It should work out to about the same percentage of connections as the mutation rate
      * @param mutationRate the percentage of connections that should be mutated
      */
-    void Mutate(double mutationRate) {
+    void Mutate(float mutationRate) {
         for (Connection[] connections: matrix) {
             for (Connection connection: connections) {
-                if(rand.nextDouble() <= mutationRate) {
+                if((float) rand.nextDouble() <= mutationRate) {
                     connection.newWeight();
                 }
             }
@@ -70,11 +70,11 @@ class Matrix {
         }
     }
 
-    double[][] getWeights() {
-        double[][] weights = new double[matrix.length][];
+    float[][] getWeights() {
+        float[][] weights = new float[matrix.length][];
 
         for(int i = 0; i < weights.length; i++) {
-            weights[i] = new double[matrix[i].length];
+            weights[i] = new float[matrix[i].length];
             for(int n = 0; n < weights[i].length; n ++) {
                 weights[i][n] = matrix[i][n].getWeight();
             }

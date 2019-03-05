@@ -12,7 +12,7 @@ public class NeuralNet {
     private Matrix[] hiddenToHidden;
     private Matrix hiddenToOutput;
 
-    private double mutationRate;
+    private float mutationRate;
 
     /**
      * This constructor creates a neural network from scratch
@@ -24,7 +24,7 @@ public class NeuralNet {
      * @param numOutputs the number of output nodes
      * @param mutationRate the percent of connections that are changed each mutation
      */
-    public NeuralNet(int numInputs, int hiddenLayers, int numHidden, int numOutputs, double mutationRate) {
+    public NeuralNet(int numInputs, int hiddenLayers, int numHidden, int numOutputs, float mutationRate) {
         this.mutationRate = mutationRate;
 
         inputNodes = new Node[numInputs + 1];
@@ -86,7 +86,7 @@ public class NeuralNet {
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes, parent.hiddenToOutput.getConnections());
     }
 
-    public NeuralNet(double[][][] weights) {
+    public NeuralNet(float[][][] weights) {
         this.mutationRate = mutationRate;
 
         inputNodes = new Node[weights[0].length];
@@ -197,30 +197,30 @@ public class NeuralNet {
         return numTroops;
     }
 
-    public void setInputs(double[] inputs) {
+    public void setInputs(float[] inputs) {
         for(int i = 0; i < inputs.length; i++) {
             inputNodes[i].setValue(inputs[i]);
         }
     }
 
-    public double[][][] getWeights() {
-        double[][][] weights;
+    public float[][][] getWeights() {
+        float[][][] weights;
 
-        weights = new double[hiddenToHidden.length + 2][][];
+        weights = new float[hiddenToHidden.length + 2][][];
 
-        weights[0] = new double[inputToHidden.getWeights().length][];
+        weights[0] = new float[inputToHidden.getWeights().length][];
         for(int i = 0; i < weights[0].length; i ++) {
             weights[0][i] = inputToHidden.getWeights()[i];
         }
 
         for(int i = 0; i < hiddenToHidden.length; i++) {
-            weights[i + 1] = new double[hiddenToHidden[i].getWeights().length][];
+            weights[i + 1] = new float[hiddenToHidden[i].getWeights().length][];
             for(int n = 0; n < weights[i + 1].length; n++) {
                 weights[i + 1][n] = hiddenToHidden[i].getWeights()[n];
             }
         }
 
-        weights[weights.length - 1] = new double[hiddenToOutput.getWeights().length][];
+        weights[weights.length - 1] = new float[hiddenToOutput.getWeights().length][];
         for(int i = 0; i < weights[weights.length - 1].length; i ++) {
             weights[weights.length - 1][i] = hiddenToOutput.getWeights()[i];
         }

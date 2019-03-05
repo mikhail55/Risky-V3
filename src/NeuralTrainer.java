@@ -9,7 +9,7 @@ public class NeuralTrainer {
         //NetController netController = new NetController(netSave.readNetFile(fileName)[0]);
         NetController netController = new NetController();
 
-        double [][][][] saveData = new double[1][][][];
+        float [][][][] saveData = new float[1][][][];
         saveData[0] = netController.save();
 
         netSave.saveFile(fileName, saveData);

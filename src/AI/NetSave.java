@@ -17,8 +17,8 @@ public class NetSave {
     public NetSave() { }
 
     // I'M SO SORRY I HATE THE SCARY ARRAY TOO
-    public double[][][][] readNetFile(String fileName) {
-        double[][][][] weights = new double[0][0][0][0];
+    public float[][][][] readNetFile(String fileName) {
+        float[][][][] weights = new float[0][0][0][0];
 
         try {
 
@@ -27,7 +27,7 @@ public class NetSave {
 
             fileInput.useDelimiter("ø");
 
-            weights = new double[Integer.parseInt(fileInput.next())][][][];
+            weights = new float[Integer.parseInt(fileInput.next())][][][];
 
             fileInput.next();
 
@@ -36,13 +36,13 @@ public class NetSave {
             // Third layer is which node
             // Fourth layer is each weight
             for(int k = 0; k < weights.length; k++) {
-                weights[k] = new double[Integer.parseInt(fileInput.next())][][];
+                weights[k] = new float[Integer.parseInt(fileInput.next())][][];
                 for (int i = 0; i < weights[k].length; i++) {
-                    weights[k][i] = new double[Integer.parseInt(fileInput.next())][];
+                    weights[k][i] = new float[Integer.parseInt(fileInput.next())][];
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        weights[k][i][n] = new double[Integer.parseInt(fileInput.next())];
+                        weights[k][i][n] = new float[Integer.parseInt(fileInput.next())];
                         for (int j = 0; j < weights[k][i][n].length; j++) {
-                            weights[k][i][n][j] = Double.parseDouble(fileInput.next());
+                            weights[k][i][n][j] = Float.parseFloat(fileInput.next());
                         }
                     }
 
@@ -69,7 +69,7 @@ public class NetSave {
         return weights;
     }
 
-    public void saveFile(String fileName, double[][][][] weights) {
+    public void saveFile(String fileName, float[][][][] weights) {
         try {
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
