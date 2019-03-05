@@ -21,7 +21,7 @@ public class NetSave {
         float[][][][] weights = new float[0][0][0][0];
 
 
-        fileName = fileName + ".jpg";
+        fileName = fileName;
 
         try {
 
@@ -68,21 +68,21 @@ public class NetSave {
 
     public void saveFile(String fileName, float[][][][] weights) {
         try {
-            fileName = fileName + ".jpg";
+            fileName = fileName;
 
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter outFile = new PrintWriter(bw);
 
-            outFile.println(weights.length);
+            outFile.println((byte) weights.length);
             for(int k = 0; k < weights.length; k++) {
-                outFile.println(weights[k].length);
+                outFile.println((byte) weights[k].length);
                 for (int i = 0; i < weights[k].length; i++) {
-                    outFile.println(weights[k][i].length);
+                    outFile.println((byte) weights[k][i].length);
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        outFile.println(weights[k][i][n].length);
+                        outFile.println((byte) weights[k][i][n].length);
                         for (int j = 0; j < weights[k][i][n].length; j++) {
-                            outFile.println(weights[k][i][n][j]);
+                            outFile.println((byte) weights[k][i][n][j]);
                         }
                     }
                 }
