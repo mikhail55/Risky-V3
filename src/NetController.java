@@ -20,17 +20,38 @@ public class NetController {
     // 1 output : getNumTroops
     // 1 output : end turn
 
-    private int numCells = 323;
+    //private int numCells = 323;
 
-    private int numInputs = 975;
+    /*private int numInputs = 975;
     private int hiddenLayers = 2;
     private int numHidden = 1000;
-    private int numOutputs = 325;
+    private int numOutputs = 325;*/
+
+    private int numInputs = 4;
+    private int hiddenLayers = 5;
+    private int numHidden = 6;
+    private int numOutputs = 4;
+
     private double mutationRate = 0.1;
 
     private Player player;
     private GameCell.Owner owner;
     private GameLogic logic;
+
+    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
+    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
+
+    NetController() {
+        neuralNet = new NeuralNet(numInputs, hiddenLayers, numHidden, numOutputs, mutationRate);
+    }
+
+    NetController(double[][][] weights) {
+        neuralNet = new NeuralNet(weights);
+    }
+
+    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
+    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
+
 
     NetController(GameCell.Owner owner, GameLogic logic) {
         neuralNet = new NeuralNet(numInputs, hiddenLayers, numHidden, numOutputs, mutationRate);
@@ -48,9 +69,8 @@ public class NetController {
         this.owner = parent.owner;
     }
 
-    NetController(int[][][] weights, GameCell.Owner owner, GameLogic logic) {
+    NetController(double[][][] weights, GameCell.Owner owner, GameLogic logic) {
         neuralNet = new NeuralNet(weights);
-        neuralNet.Mutate();
         player = new Player(owner, logic);
 
         this.owner = owner;

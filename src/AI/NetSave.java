@@ -9,6 +9,7 @@ import java.util.Scanner;
 /**
  * @author TylerWilson
  */
+
 public class NetSave {
 
     private Scanner fileInput;
@@ -27,6 +28,7 @@ public class NetSave {
             fileInput.useDelimiter("ø");
 
             weights = new double[Integer.parseInt(fileInput.next())][][][];
+
             fileInput.next();
 
             // First layer is which network
@@ -44,6 +46,10 @@ public class NetSave {
                         }
                     }
 
+                    fileInput.next();
+                }
+
+                if(fileInput.hasNext()) {
                     fileInput.next();
                 }
             }
@@ -74,7 +80,7 @@ public class NetSave {
             outFile.println();
 
             for(int k = 0; k < weights.length; k++) {
-                outFile.print(weights[k].length + "ø");
+                outFile.print("ø" + weights[k].length + "ø");
                 for (int i = 0; i < weights[k].length; i++) {
                     outFile.print(weights[k][i].length + "ø");
                     for (int n = 0; n < weights[k][i].length; n++) {
@@ -85,7 +91,10 @@ public class NetSave {
                     }
 
                     outFile.println();
+                    outFile.print("ø");
                 }
+
+                outFile.println();
             }
 
             outFile.close();

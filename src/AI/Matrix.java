@@ -29,7 +29,7 @@ class Matrix {
         }
     }
 
-    Matrix(Node[] fromLayer, Node[] toLayer, int[][] weightCopy) {
+    Matrix(Node[] fromLayer, Node[] toLayer, double[][] weightCopy) {
         matrix = new Connection[fromLayer.length][toLayer.length];
 
         for(int i = 0; i < matrix.length; i++) {
@@ -75,7 +75,7 @@ class Matrix {
 
         for(int i = 0; i < weights.length; i++) {
             weights[i] = new double[matrix[i].length];
-            for(int n = 0; n < weights[i][n]; i ++) {
+            for(int n = 0; n < weights[i].length; n ++) {
                 weights[i][n] = matrix[i][n].getWeight();
             }
         }

@@ -86,11 +86,11 @@ public class NeuralNet {
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes, parent.hiddenToOutput.getConnections());
     }
 
-    public NeuralNet(int[][][] weights) {
+    public NeuralNet(double[][][] weights) {
         this.mutationRate = mutationRate;
 
         inputNodes = new Node[weights[0].length];
-        hiddenNodes = new Node[weights.length - 2][weights[1].length];
+        hiddenNodes = new Node[weights.length - 1][weights[1].length];
         outputNodes = new Node[weights[weights.length - 1][0].length];
 
         for (int i = 0; i < inputNodes.length; i++) {
@@ -206,12 +206,26 @@ public class NeuralNet {
     public double[][][] getWeights() {
         double[][][] weights;
 
-        weights = new double[hiddenNodes.length + 1][][];
-        weights[0] = inputToHidden.getWeights();
-        for(int i = 0; i < hiddenToHidden.length; i++) {
-            weights[i + 1] = hiddenToHidden[i].getWeights();
+        weights = new double[hiddenToHidden.length + 2][][];
+
+        weights[0] = new double[inputToHidden.getWeights().length][];
+        for(int i = 0; i < weights[0].length; i ++) {
+            weights[0][i] = inputToHidden.getWeights()[i];
         }
-        weights[weights.length - 1] = hiddenToOutput.getWeights();
+
+        for(int i = 0; i < hiddenToHidden.length; i++) {
+            weights[i + 1] = new double[hiddenToHidden[i].getWeights().length][];
+            for(int n = 0; n < weights[i + 1].length; n++) {
+                weights[i + 1][n] = hiddenToHidden[i].getWeights()[n];
+            }
+        }
+
+        weights[weights.length - 1] = new double[hiddenToOutput.getWeights().length][];
+        for(int i = 0; i < weights[weights.length - 1].length; i ++) {
+            weights[weights.length - 1][i] = hiddenToOutput.getWeights()[i];
+        }
+
+        //System.out.println(inputToHidden.getWeights()[0][0]);
 
         return weights;
     }
