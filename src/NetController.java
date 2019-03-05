@@ -22,15 +22,15 @@ public class NetController {
 
     //private int numCells = 323;
 
-    /*private int numInputs = 975;
+    private int numInputs = 975;
     private int hiddenLayers = 2;
     private int numHidden = 1000;
-    private int numOutputs = 325;*/
+    private int numOutputs = 325;
 
-    private int numInputs = 4;
+    /*private int numInputs = 4;
     private int hiddenLayers = 5;
     private int numHidden = 6;
-    private int numOutputs = 4;
+    private int numOutputs = 4;*/
 
     private float mutationRate = (float) 0.1;
 

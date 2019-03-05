@@ -20,37 +20,34 @@ public class NetSave {
     public float[][][][] readNetFile(String fileName) {
         float[][][][] weights = new float[0][0][0][0];
 
+
+        fileName = fileName + ".jpg";
+
         try {
 
             File dataFile = new File(fileName);
             fileInput = new Scanner(dataFile);
 
-            fileInput.useDelimiter("ø");
-
-            weights = new float[Integer.parseInt(fileInput.next())][][][];
-
-            fileInput.next();
+            weights = new float[Integer.parseInt(fileInput.nextLine())][][][];
 
             // First layer is which network
             // Second layer is which layer of weights
             // Third layer is which node
             // Fourth layer is each weight
             for(int k = 0; k < weights.length; k++) {
-                weights[k] = new float[Integer.parseInt(fileInput.next())][][];
+                weights[k] = new float[Integer.parseInt(fileInput.nextLine())][][];
                 for (int i = 0; i < weights[k].length; i++) {
-                    weights[k][i] = new float[Integer.parseInt(fileInput.next())][];
+                    weights[k][i] = new float[Integer.parseInt(fileInput.nextLine())][];
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        weights[k][i][n] = new float[Integer.parseInt(fileInput.next())];
+                        weights[k][i][n] = new float[Integer.parseInt(fileInput.nextLine())];
                         for (int j = 0; j < weights[k][i][n].length; j++) {
-                            weights[k][i][n][j] = Float.parseFloat(fileInput.next());
+                            weights[k][i][n][j] = Float.parseFloat(fileInput.nextLine());
                         }
                     }
-
-                    fileInput.next();
                 }
 
                 if(fileInput.hasNext()) {
-                    fileInput.next();
+                    fileInput.nextLine();
                 }
             }
 
@@ -71,36 +68,30 @@ public class NetSave {
 
     public void saveFile(String fileName, float[][][][] weights) {
         try {
+            fileName = fileName + ".jpg";
+
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter outFile = new PrintWriter(bw);
 
-            outFile.println(weights.length + "ø");
-
-            outFile.println();
-
+            outFile.println(weights.length);
             for(int k = 0; k < weights.length; k++) {
-                outFile.print("ø" + weights[k].length + "ø");
+                outFile.println(weights[k].length);
                 for (int i = 0; i < weights[k].length; i++) {
-                    outFile.print(weights[k][i].length + "ø");
+                    outFile.println(weights[k][i].length);
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        outFile.print(weights[k][i][n].length + "ø");
+                        outFile.println(weights[k][i][n].length);
                         for (int j = 0; j < weights[k][i][n].length; j++) {
-                            outFile.print(weights[k][i][n][j] + "ø");
+                            outFile.println(weights[k][i][n][j]);
                         }
                     }
-
-                    outFile.println();
-                    outFile.print("ø");
                 }
-
-                outFile.println();
             }
 
             outFile.close();
 
         } catch (Exception e) {
-            System.err.println("Error");
+            System.err.println("Error writing weights to file");
             e.printStackTrace();
             System.exit(-1);
         }
