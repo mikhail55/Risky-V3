@@ -9,7 +9,7 @@ public class GameLogic {
 
     private RiskyFileReader fileReader;
 
-    GameBoard gameBoard;
+    private GameBoard gameBoard;
 
     public GameLogic() {
         this.players = players;
@@ -96,6 +96,10 @@ public class GameLogic {
     private int rollDice(){
         Random rand = new Random();
         return rand.nextInt(6) + 1;
+    }
+
+    public GameBoard getBoard() {
+        return gameBoard;
     }
 
     //deploys one troop on a selected tile
