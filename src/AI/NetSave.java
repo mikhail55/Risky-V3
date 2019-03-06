@@ -20,9 +20,6 @@ public class NetSave {
     public float[][][][] readNetFile(String fileName) {
         float[][][][] weights = new float[0][0][0][0];
 
-
-        fileName = fileName;
-
         try {
 
             File dataFile = new File(fileName);
@@ -68,8 +65,6 @@ public class NetSave {
 
     public void saveFile(String fileName, float[][][][] weights) {
         try {
-            fileName = fileName;
-
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter outFile = new PrintWriter(bw);
