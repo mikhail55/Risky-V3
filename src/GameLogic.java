@@ -29,41 +29,64 @@ public class GameLogic {
     }
 
     public void attack(GameCell attacker, GameCell defender, int numTroops){
-        if (!currentPlayer.checkTile(attacker, defender) && checkAdjacent(attacker, defender) && checkAllowed(attacker)){
+        if (!currentPlayer.checkTile(attacker, defender) && checkAdjacent(attacker, defender) && checkAllowed(attacker) && attacker.getNumTroops() > defender.getNumTroops()){
 
-            int killed = 0;
+            System.out.println("Attacker: " + attacker.getOwner());
+            System.out.println("Defender: " + defender.getOwner());
+
+            int killedAtt = 0;
+            int killedDef = 0;
 
             ArrayList<Integer> rolledNumAtt = new ArrayList();
             ArrayList<Integer> rolledNumDef = new ArrayList();
 
             // roll the dice for each defending regiment
             for (int i = 0; i < defender.getNumTroops(); i ++){
-                rolledNumAtt.add(rollDice());
+                rolledNumDef.add(rollDice());
             }
+            System.out.println("Defender: " + rolledNumDef);
 
             //roll the dice for each attacking regiment(minus one)
             for (int i = 0; i < numTroops - 1; i++){
                 rolledNumAtt.add(rollDice());
             }
+            System.out.println("Attacker: " + rolledNumAtt);
 
             //for each rolled defender dice checks the attacker rolls
             for (int i = 0; i < rolledNumDef.size(); i++){
                 for (int j = 0; j < rolledNumAtt.size(); j++){
-                    //if there are any attacker rolls that are higher than the given defender roll, kills on of the defenders
+                    //if there are any attacker rolls that are higher than the given defender roll, kills one of the defenders
                     if (rolledNumAtt.get(j) > rolledNumDef.get(i)){
                         //that attacker roll is removed
                         rolledNumAtt.remove(j);
 
-                        defender.setAddedTroops(-1);
-                        killed++;
+//                        defender.setAddedTroops(-1);
+                        killedDef++;
+                        break;
+                    } else if (j == rolledNumAtt.size()-1){
+                        killedAtt++;
                     }
                 }
             }
 
+            System.out.println("Attackers dead: " + killedAtt);
+            System.out.println("Defenders dead: " + killedDef);
+
             //if the attacker did not kill all of the defenders, removes one attacker for each defender alive
-            if (killed != defender.getNumTroops()){
-                attacker.setAddedTroops(defender.getNumTroops() - killed);
+            if (killedDef != defender.getNumTroops()){
+                attacker.setAddedTroops(-killedAtt);
+                System.out.println("Had att: " + attacker.getNumTroops());
+                System.out.println("Added att: " + attacker.getAddedTroops());
+
+            } else {
+                defender.setOwnerEndTurn(attacker.getOwner());
+                defender.setAddedTroops(numTroops - killedDef);
+                System.out.println("Had def: " + defender.getNumTroops());
+                System.out.println("Added def: " + defender.getAddedTroops());
             }
+
+            System.out.println("Def owner: " + defender.getOwnerEndTurn());
+
 
         }
     }
@@ -138,5 +161,10 @@ public class GameLogic {
 
     public Player[] getPlayers() {
         return players;
+    }
+
+    public void setPlayers(Player[] players) {
+        this.players = players;
+        currentPlayer = players[0];
     }
 }
