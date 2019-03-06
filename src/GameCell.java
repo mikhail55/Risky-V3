@@ -62,4 +62,9 @@ public class GameCell {
     public Point getCoordinates() {
         return coordinates;
     }
+
+    public void drawCell(Graphics g, int x, int y) {
+        g.setColor(Color.black);
+        g.drawRect(x, y, 40, 40);
+    }
 }
