@@ -25,26 +25,17 @@ public class GameDriver {
 
         board.repaint();
 
-        Player[] players = new Player[2];
+        Player[] players = new Player[4];
 
         GameLogic logic = new GameLogic();
 
         players[0] = new Player(GameCell.Owner.Team1, logic);
-
         players[1] = new Player(GameCell.Owner.Team2, logic);
+        players[2] = new Player(GameCell.Owner.Team3, logic);
+        players[3] = new Player(GameCell.Owner.Team4, logic);
 
         logic.setPlayers(players);
-
         logic.setGameBoard(board);
-
-        board.getCells()[0][1].setNumTroops(5);
-        board.getCells()[0][0].setNumTroops(2);
-        board.getCells()[1][0].setNumTroops(5);
-        board.getCells()[1][1].setNumTroops(2);
-
-
-        logic.attack(board.getCells()[0][1], board.getCells()[0][0], 5);
-        logic.attack(board.getCells()[0][1], board.getCells()[1][1], 5);
 
         // Repaint the program each time taskPerformer is called
         ActionListener taskPerformer = new ActionListener() {

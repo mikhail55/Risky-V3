@@ -24,6 +24,10 @@ public class GameCell {
 
         if(owner == Owner.Water) {
             isWater = true;
+        } else if (owner == Owner.Neutral) {
+            numTroops = 2;
+        } else {
+            numTroops = 5;
         }
     }
 
@@ -78,8 +82,22 @@ public class GameCell {
             g.setColor(Color.blue);
         } else if(owner == Owner.Neutral) {
             g.setColor(Color.lightGray);
+        } else if(owner == Owner.Team1) {
+            g.setColor(Color.RED);
+        } else if(owner == Owner.Team2) {
+            g.setColor(Color.MAGENTA);
+        } else if(owner == Owner.Team3) {
+            g.setColor(Color.GREEN);
+        } else if(owner == Owner.Team4) {
+            g.setColor(Color.YELLOW);
         }
 
         g.fillRect(coordinates.x + 1, coordinates.y + 1, 39, 39);
+
+
+        g.setColor(Color.black);
+        if(!isWater) {
+            g.drawString(Integer.toString(numTroops), coordinates.x + 16, coordinates.y + 26);
+        }
     }
 }

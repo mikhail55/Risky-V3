@@ -64,6 +64,8 @@ public class NetSave {
     }
 
     public void saveFile(String fileName, float[][][][] weights) {
+        fileName = fileName + ".jpg";
+
         try {
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);

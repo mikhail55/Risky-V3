@@ -98,7 +98,9 @@ public class GameBoard extends JPanel{
 
 
         // SECOND COLUMN
-        for(int i = 1; i < 5; i++) {
+        cells[2][1] = new GameCell(GameCell.Owner.Team1, new Point(2 * cellSize, cellSize));
+
+        for(int i = 2; i < 5; i++) {
             cells[2][i] = new GameCell(GameCell.Owner.Neutral, new Point(2 * cellSize, i * cellSize));
         }
 
@@ -124,9 +126,11 @@ public class GameBoard extends JPanel{
             cells[3][i] = new GameCell(GameCell.Owner.Water, new Point(3 * cellSize, i * cellSize));
         }
 
-        for(int i = 10; i < 15; i++) {
+        for(int i = 10; i < 14; i++) {
             cells[3][i] = new GameCell(GameCell.Owner.Neutral, new Point(3 * cellSize, i * cellSize));
         }
+
+        cells[3][14] = new GameCell(GameCell.Owner.Team3, new Point(3 * cellSize, 14 * cellSize));
 
         for(int i = 15; i < rows - 1 ; i++) {
             cells[3][i] = new GameCell(GameCell.Owner.Water, new Point(3 * cellSize, i * cellSize));
@@ -320,7 +324,9 @@ public class GameBoard extends JPanel{
 
 
         //FIFTEENTH COLUMN
-        for(int i = 1; i < 6; i++) {
+        cells[15][1] = new GameCell(GameCell.Owner.Team2, new Point(15 * cellSize, cellSize));
+
+        for(int i = 2; i < 6; i++) {
             cells[15][i] = new GameCell(GameCell.Owner.Neutral, new Point(15 * cellSize, i * cellSize));
         }
 
@@ -354,9 +360,11 @@ public class GameBoard extends JPanel{
             cells[16][i] = new GameCell(GameCell.Owner.Water, new Point(16 * cellSize, i * cellSize));
         }
 
-        for(int i = 11; i < 15; i++) {
+        for(int i = 11; i < 14; i++) {
             cells[16][i] = new GameCell(GameCell.Owner.Neutral, new Point(16 * cellSize, i * cellSize));
         }
+
+        cells[16][14] = new GameCell(GameCell.Owner.Team4, new Point(16 * cellSize, 14 * cellSize));
 
         for(int i = 15; i < rows - 1 ; i++) {
             cells[16][i] = new GameCell(GameCell.Owner.Water, new Point(16 * cellSize, i * cellSize));
