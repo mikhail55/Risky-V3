@@ -14,18 +14,11 @@ public class GameBoard extends JPanel{
     private Menu menu;
 
     int rows = 17;
-
     int columns = 19;
+    int cellSize = 40;
 
     public GameBoard() {
-
-        cells = new GameCell[19][17];
-
-        for(int i = 0; i < cells.length; i++) {
-            for(int n = 0; n < cells[i].length; n++) {
-                cells[i][n] = new GameCell(GameCell.Owner.Neutral, new Point(i * 40, n * 40));
-            }
-        }
+        setUpGameCells();
 
         // Add a mouse listener to the panel
         this.addMouseListener(new MouseListener() {
@@ -44,11 +37,11 @@ public class GameBoard extends JPanel{
                 int column = 0;
 
                 while(!tileFound) {
-                    if(clickPoint.getX() > 40 * (column + 1)) {
+                    if(clickPoint.getX() > cellSize * (column + 1)) {
                         column++;
                     }
 
-                    else if(clickPoint.getY() > 40 * (row + 1)) {
+                    else if(clickPoint.getY() > cellSize * (row + 1)) {
                         row ++;
                     }
 
@@ -75,6 +68,28 @@ public class GameBoard extends JPanel{
         });
     }
 
+    private void setUpGameCells() {
+        cells = new GameCell[columns][rows];
+
+        /*for(int i = 0; i < cells.length; i++) {
+            for(int n = 0; n < cells[i].length; n++) {
+                cells[i][n] = new GameCell(GameCell.Owner.Neutral, new Point(i * cellSize, n * cellSize));
+            }
+        }*/
+        for(int i = 0; i < cells[0].length; i++) {
+            cells[0][i] = new GameCell(GameCell.Owner.Water, new Point(0, i * cellSize));
+        }
+
+        for(int i = 0; i < cells[columns - 1].length; i++) {
+            cells[columns - 1][i] = new GameCell(GameCell.Owner.Water, new Point((columns - 1) * cellSize, i * cellSize));
+        }
+
+        for(int i = 1; i < columns - 1; i++) {
+            cells[i][0] = new GameCell(GameCell.Owner.Water, new Point(i * cellSize, 0));
+            cells[i][rows - 1] = new GameCell(GameCell.Owner.Water, new Point(i * cellSize, (rows - 1) * cellSize));
+        }
+    }
+
     public GameCell[][] getCells() {
         return cells;
     }
@@ -82,7 +97,9 @@ public class GameBoard extends JPanel{
     public void paintComponent(Graphics g){
         for(int i = 0; i < cells.length; i++) {
             for(int n = 0; n < cells[i].length; n++) {
-                cells[i][n].drawCell(g);
+                if(cells[i][n] != null) {
+                    cells[i][n].drawCell(g);
+                }
             }
         }
     }

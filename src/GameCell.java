@@ -1,5 +1,8 @@
 import java.awt.*;
 
+/**
+ * @author Tyler & Mikhail
+ */
 public class GameCell {
 
     private int numTroops;
@@ -18,6 +21,10 @@ public class GameCell {
         owner = team;
         ownerEndTurn = owner;
         this.coordinates = coordinates;
+
+        if(owner == Owner.Water) {
+            isWater = true;
+        }
     }
 
     public void update(){
@@ -63,12 +70,13 @@ public class GameCell {
         return coordinates;
     }
 
-    /**
-     * @author Tyler Wilson
-     * @param g
-     */
     public void drawCell(Graphics g) {
         g.setColor(Color.black);
         g.drawRect(coordinates.x, coordinates.y, 40, 40);
+
+        if(owner == Owner.Water) {
+            g.setColor(Color.blue);
+            g.fillRect(coordinates.x + 1, coordinates.y + 1, 39, 39);
+        }
     }
 }
