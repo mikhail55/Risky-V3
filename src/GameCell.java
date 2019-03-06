@@ -63,8 +63,8 @@ public class GameCell {
         return coordinates;
     }
 
-    public void drawCell(Graphics g, int x, int y) {
+    public void drawCell(Graphics g) {
         g.setColor(Color.black);
-        g.drawRect(x, y, 40, 40);
+        g.drawRect(coordinates.x, coordinates.y, 40, 40);
     }
 }
