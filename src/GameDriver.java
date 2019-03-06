@@ -1,27 +1,45 @@
-
 import javax.swing.*;
-import java.awt.*;
 
 public class GameDriver {
     public static void main(String[] args) {
-        // The default dimensions of the window
-        final int WIDTH = 760, HEIGHT = 680;
+//        JFrame frame = new JFrame("Risky Man");
+//
+//        GameBoard board = new GameBoard();
+//        board.repaint();
+//
+//        frame.add(board);
+//        frame.pack();
+//        frame.setLocationRelativeTo(null);
+//        frame.setVisible(true);
+//
+//
+//        board.repaint();
 
-        JFrame frame = new JFrame("Risky");
+//        GameBoard board = new GameBoard();
+//
+//        Player[] players = new Player[2];
+//
+//        GameLogic logic = new GameLogic(board.getBoard(), players);
+//
+//        players[0] = new Player(GameCell.Owner.Team1, logic);
+//
+//        players[1] = new Player(GameCell.Owner.Team2, logic);
 
-        // Set up default window size
-        frame.setPreferredSize(new Dimension(WIDTH, HEIGHT));
+//        logic.setPlayers(players);
 
-        GameBoard board = new GameBoard();
-        board.repaint();
+//        board.getBoard()[0][1]
 
-        frame.add(board);
-        frame.pack();
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
+//        board.getBoard()[0][1].setNumTroops(5);
+//        board.getBoard()[0][0].setNumTroops(2);
+//        board.getBoard()[1][0].setNumTroops(5);
+//        board.getBoard()[1][1].setNumTroops(2);
+//
+//
+//        logic.attack(board.getBoard()[0][1], board.getBoard()[0][0], 5);
+//        logic.attack(board.getBoard()[0][1], board.getBoard()[1][1], 5);
 
 
-        board.repaint();
+
 
     }
 }

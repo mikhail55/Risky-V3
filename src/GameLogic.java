@@ -167,4 +167,8 @@ public class GameLogic {
         this.players = players;
         currentPlayer = players[0];
     }
+
+    public Player getCurrentPlayer() {
+        return currentPlayer;
+    }
 }
