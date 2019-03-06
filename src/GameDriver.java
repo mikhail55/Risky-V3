@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GameDriver {
     public static void main(String[] args) {
@@ -12,6 +14,8 @@ public class GameDriver {
 
         GameBoard board = new GameBoard();
         board.repaint();
+
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         frame.add(board);
         frame.pack();
@@ -41,5 +45,18 @@ public class GameDriver {
 
         logic.attack(board.getBoard()[0][1], board.getBoard()[0][0], 5);
         logic.attack(board.getBoard()[0][1], board.getBoard()[1][1], 5);*/
+
+        // Repaint the program each time taskPerformer is called
+        ActionListener taskPerformer = new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                board.repaint();
+            }
+        };
+
+        // Call taskPerformer every 60 ticks
+        Timer clock = new Timer(60, taskPerformer);
+        clock.start();
+
     }
 }
