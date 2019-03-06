@@ -70,13 +70,11 @@ public class GameBoard extends JPanel{
         });
     }
 
-    public void paintComponent(Graphics g){
-        super.paintComponent(g);
-
+    public void repaint(Graphics g){
         GameCell[][] cells = logic.getBoard();
         for(int i = 0; i < cells.length; i++) {
             for(int n = 0; n < cells[i].length; n++) {
-                cells[i][n].drawCell(g, i, n);
+                //cells[i][n].drawCell();
             }
         }
         g.setColor(Color.BLUE);
