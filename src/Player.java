@@ -65,7 +65,7 @@ public class Player {
                 lastTileChecked = null;
             }
             //clicked the same tile twice = deploy
-            else if (lastTileChecked == clicked){
+            else if (lastTileChecked == clicked) {
                 logic.deploy(clicked);
                 lastTileChecked = null;
             }
