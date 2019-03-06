@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class GameDriver {
     public static void main(String[] args) {
-        final int WIDTH = 760, HEIGHT = 680;
+        final int WIDTH = 761, HEIGHT = 703;
 
         JFrame frame = new JFrame("Risky Man");
 

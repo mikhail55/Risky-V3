@@ -19,7 +19,7 @@ public class GameBoard extends JPanel{
 
     public GameBoard() {
 
-        cells = new GameCell[17][19];
+        cells = new GameCell[19][17];
 
         for(int i = 0; i < cells.length; i++) {
             for(int n = 0; n < cells[i].length; n++) {
@@ -82,12 +82,8 @@ public class GameBoard extends JPanel{
     public void paintComponent(Graphics g){
         for(int i = 0; i < cells.length; i++) {
             for(int n = 0; n < cells[i].length; n++) {
-                cells[i][n].drawCell(g, i, n);
+                cells[i][n].drawCell(g);
             }
         }
-        g.setColor(Color.BLUE);
-        g.drawRect(0,0,30,30);
     }
-
-
 }
