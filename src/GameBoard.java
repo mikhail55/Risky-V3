@@ -21,6 +21,12 @@ public class GameBoard extends JPanel{
 
         cells = new GameCell[17][19];
 
+        for(int i = 0; i < cells.length; i++) {
+            for(int n = 0; n < cells[i].length; n++) {
+                cells[i][n] = new GameCell(GameCell.Owner.Neutral, new Point(i * 40, n * 40));
+            }
+        }
+
         // Add a mouse listener to the panel
         this.addMouseListener(new MouseListener() {
 
@@ -74,7 +80,7 @@ public class GameBoard extends JPanel{
         GameCell[][] cells = logic.getBoard();
         for(int i = 0; i < cells.length; i++) {
             for(int n = 0; n < cells[i].length; n++) {
-                //cells[i][n].drawCell();
+                cells[i][n].drawCell(g, i, n);
             }
         }
         g.setColor(Color.BLUE);
