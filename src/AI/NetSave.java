@@ -4,6 +4,7 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.PrintWriter;
+import java.nio.ByteBuffer;
 import java.util.Scanner;
 
 /**
@@ -19,7 +20,6 @@ public class NetSave {
     // I'M SO SORRY I HATE THE SCARY ARRAY TOO
     public float[][][][] readNetFile(String fileName) {
         float[][][][] weights = new float[0][0][0][0];
-
         try {
 
             File dataFile = new File(fileName);
@@ -64,22 +64,20 @@ public class NetSave {
     }
 
     public void saveFile(String fileName, float[][][][] weights) {
-        fileName = fileName + ".jpg";
-
         try {
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter outFile = new PrintWriter(bw);
 
-            outFile.println((byte) weights.length);
+            outFile.println(weights.length);
             for(int k = 0; k < weights.length; k++) {
-                outFile.println((byte) weights[k].length);
+                outFile.println(weights[k].length);
                 for (int i = 0; i < weights[k].length; i++) {
-                    outFile.println((byte) weights[k][i].length);
+                    outFile.println(weights[k][i].length);
                     for (int n = 0; n < weights[k][i].length; n++) {
-                        outFile.println((byte) weights[k][i][n].length);
+                        outFile.println(weights[k][i][n].length);
                         for (int j = 0; j < weights[k][i][n].length; j++) {
-                            outFile.println((byte) weights[k][i][n][j]);
+                            outFile.println(weights[k][i][n][j]);
                         }
                     }
                 }
