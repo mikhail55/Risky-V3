@@ -76,7 +76,10 @@ public class GameCell {
 
         if(owner == Owner.Water) {
             g.setColor(Color.blue);
-            g.fillRect(coordinates.x + 1, coordinates.y + 1, 39, 39);
+        } else if(owner == Owner.Neutral) {
+            g.setColor(Color.lightGray);
         }
+
+        g.fillRect(coordinates.x + 1, coordinates.y + 1, 39, 39);
     }
 }

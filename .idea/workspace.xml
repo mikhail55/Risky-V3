@@ -19,10 +19,11 @@
       <file leaf-file-name="GameBoard.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/GameBoard.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="523">
-              <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+            <state relative-caret-position="308">
+              <caret line="378" column="22" lean-forward="false" selection-start-line="378" selection-start-column="22" selection-end-line="378" selection-end-column="22" />
               <folding>
                 <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+                <element signature="method#mouseClicked#0;class#471:1749" expanded="false" />
                 <element signature="method#paintComponent#0;class#GameBoard#0" expanded="false" />
               </folding>
             </state>
@@ -32,8 +33,8 @@
       <file leaf-file-name="GameCell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameCell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="521">
-              <caret line="78" column="67" lean-forward="false" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
+            <state relative-caret-position="566">
+              <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -42,7 +43,7 @@
       <file leaf-file-name="GameDriver.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameDriver.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="144">
+            <state relative-caret-position="570">
               <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
               <folding />
             </state>
@@ -282,7 +283,14 @@
       <option name="project" value="LOCAL" />
       <updated>1551894120182</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Made outer ring of water tiles">
+      <created>1551894899827</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1551894899827</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -327,7 +335,8 @@
     <MESSAGE value="Fixed issues in AI trying to access the cells thorugh Game Logic" />
     <MESSAGE value="Emptied game logic constructor" />
     <MESSAGE value="Fixed drawing the outline of each cell" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed drawing the outline of each cell" />
+    <MESSAGE value="Made outer ring of water tiles" />
+    <option name="LAST_COMMIT_MESSAGE" value="Made outer ring of water tiles" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -358,6 +367,7 @@
           <caret line="72" column="36" lean-forward="true" selection-start-line="72" selection-start-column="36" selection-end-line="72" selection-end-column="36" />
           <folding>
             <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#471:1749" expanded="false" />
             <element signature="method#paintComponent#0;class#GameBoard#0" expanded="false" />
           </folding>
         </state>
@@ -386,7 +396,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameDriver.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="144">
+        <state relative-caret-position="570">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding />
         </state>
@@ -394,18 +404,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameCell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="521">
-          <caret line="78" column="67" lean-forward="false" selection-start-line="78" selection-start-column="67" selection-end-line="78" selection-end-column="67" />
+        <state relative-caret-position="566">
+          <caret line="81" column="0" lean-forward="false" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameBoard.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="523">
-          <caret line="89" column="9" lean-forward="true" selection-start-line="89" selection-start-column="9" selection-end-line="89" selection-end-column="9" />
+        <state relative-caret-position="308">
+          <caret line="378" column="22" lean-forward="false" selection-start-line="378" selection-start-column="22" selection-end-line="378" selection-end-column="22" />
           <folding>
             <element signature="method#GameBoard#0;class#GameBoard#0" expanded="false" />
+            <element signature="method#mouseClicked#0;class#471:1749" expanded="false" />
             <element signature="method#paintComponent#0;class#GameBoard#0" expanded="false" />
           </folding>
         </state>
