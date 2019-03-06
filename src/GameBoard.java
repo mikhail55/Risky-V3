@@ -7,11 +7,20 @@ import java.awt.event.MouseListener;
 public class GameBoard extends JPanel{
     private GameCell[] provinces;
 
+    private GameCell[][] cells;
+
     private GameLogic logic;
 
     private Menu menu;
 
+    int rows = 17;
+
+    int columns = 19;
+
     public GameBoard() {
+
+        cells = new GameCell[17][19];
+
         // Add a mouse listener to the panel
         this.addMouseListener(new MouseListener() {
 
@@ -30,17 +39,17 @@ public class GameBoard extends JPanel{
                 int column = 0;
 
                 while(!tileFound) {
-                    if(clickPoint.getY() > 40 * (row + 1)) {
-                        row++;
+                    if(clickPoint.getX() > 40 * (column + 1)) {
+                        column++;
                     }
 
-                    else if(clickPoint.getX() > 40 * (column + 1)) {
-                        column ++;
+                    else if(clickPoint.getY() > 40 * (row + 1)) {
+                        row ++;
                     }
 
                     else {
                         tileFound = true;
-                        cellClicked = cells[row][column];
+                        cellClicked = cells[column][row];
                     }
                 }
 
