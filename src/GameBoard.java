@@ -36,7 +36,6 @@ public class GameBoard extends JPanel{
                 Point clickPoint = e.getPoint();
 
                 Player currentPlayer = logic.getCurrentPlayer();
-                GameCell[][] cells = logic.getBoard();
                 GameCell cellClicked = cells[0][0];
 
                 boolean tileFound = false;
@@ -76,8 +75,11 @@ public class GameBoard extends JPanel{
         });
     }
 
+    public GameCell[][] getCells() {
+        return cells;
+    }
+
     public void paintComponent(Graphics g){
-        GameCell[][] cells = logic.getBoard();
         for(int i = 0; i < cells.length; i++) {
             for(int n = 0; n < cells[i].length; n++) {
                 cells[i][n].drawCell(g, i, n);

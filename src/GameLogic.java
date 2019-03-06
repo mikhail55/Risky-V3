@@ -3,20 +3,22 @@ import java.util.Random;
 
 public class GameLogic {
 
-    private GameCell[][] board;
-
     private Player currentPlayer;
 
     private Player[] players;
 
     private RiskyFileReader fileReader;
 
-    public GameLogic(GameCell[][] madeBoard, Player[] players) {
-        board = madeBoard;
+    GameBoard gameBoard;
 
+    public GameLogic() {
         this.players = players;
 
         currentPlayer = players[0];
+    }
+
+    public void setGameBoard(GameBoard board) {
+        gameBoard = board;
     }
 
     //moves a set amount of troops from one tile to another if possible
@@ -127,12 +129,12 @@ public class GameLogic {
 
     public void endTurn(){
         setNewPlayer();
-        for (int i = 0; i < board.length; i++){
-            for (int j = 0; j < board[i].length; j++){
+        for (int i = 0; i < gameBoard.getCells().length; i++){
+            for (int j = 0; j < gameBoard.getCells()[i].length; j++){
                 //updates each tile at the end of each turn
-                board[i][j].update();
+                gameBoard.getCells()[i][j].update();
 
-                if (board[i][j].getOwner() == currentPlayer.team){
+                if (gameBoard.getCells()[i][j].getOwner() == currentPlayer.team){
                     //for each tile the player owned at the start of the turn, adds a troop for him to deploy
                     currentPlayer.setDeployableTroops(currentPlayer.getDeployableTroops()+1);
                 }
@@ -153,10 +155,6 @@ public class GameLogic {
             currentPlayer = players[3];
         }
         else { currentPlayer = players[0];}
-    }
-
-    public GameCell[][] getBoard() {
-        return board;
     }
 
     public Player[] getPlayers() {
