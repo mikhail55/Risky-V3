@@ -12,9 +12,7 @@ public class GameLogic {
     private GameBoard gameBoard;
 
     public GameLogic() {
-        this.players = players;
 
-        currentPlayer = players[0];
     }
 
     public void setGameBoard(GameBoard board) {
