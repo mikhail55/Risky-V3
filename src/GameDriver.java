@@ -34,8 +34,10 @@ public class GameDriver {
         board.getBoard()[1][0].setNumTroops(5);
         board.getBoard()[1][1].setNumTroops(2);
 
-        logic.attack(board.getBoard()[0][1], board.getBoard()[1][1], 5);
+
         logic.attack(board.getBoard()[0][1], board.getBoard()[0][0], 5);
+//        logic.attack(board.getBoard()[0][1], board.getBoard()[1][1], 5);
+
 
 
 
