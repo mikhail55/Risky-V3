@@ -1,7 +1,7 @@
 import java.awt.*;
 
 /**
- * @author Tyler & Mikhail
+ * @author Mikhail
  */
 public class GameCell {
 
@@ -74,6 +74,11 @@ public class GameCell {
         return coordinates;
     }
 
+
+    /**
+     * @author Tyler
+     * @param g the graphics component
+     */
     public void drawCell(Graphics g) {
         g.setColor(Color.black);
         g.drawRect(coordinates.x, coordinates.y, 40, 40);

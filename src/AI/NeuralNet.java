@@ -14,6 +14,9 @@ public class NeuralNet {
 
     private float mutationRate;
 
+    // Backup mutation rate if none is passed
+    private float baseMutation = 0.05f;
+
     /**
      * This constructor creates a neural network from scratch
      *
@@ -59,6 +62,13 @@ public class NeuralNet {
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes);
     }
 
+    /**
+     * This creates a neural network from a parent.
+     *
+     * Literally just copies the network
+     *
+     * @param parent the network to be copied
+     */
     public NeuralNet(NeuralNet parent) {
         this.mutationRate = parent.mutationRate;
 
@@ -86,8 +96,12 @@ public class NeuralNet {
         hiddenToOutput = new Matrix(hiddenNodes[hiddenNodes.length - 1], outputNodes, parent.hiddenToOutput.getConnections());
     }
 
+    /**
+     * Makes a neural network from saved values
+     * @param weights the weights to use when making the network
+     */
     public NeuralNet(float[][][] weights) {
-        this.mutationRate = mutationRate;
+        this.mutationRate = baseMutation;
 
         inputNodes = new Node[weights[0].length];
         hiddenNodes = new Node[weights.length - 1][weights[1].length];
@@ -171,6 +185,14 @@ public class NeuralNet {
         return choiceNode;
     }
 
+    /**
+     * Finds the number of troops to make a move with based on the highest value passed through the network
+     *
+     * Sketchy, yeah, but it might work. I can't test it because nothing else is finished in the game
+     * There's no way to know what a trained network will return because I can't train one
+     *
+     * @return the number of troops
+     */
     public int getNumTroops() {
         inputToHidden.Pass();
         for(int i = 0; i < hiddenToHidden.length; i++) {
@@ -197,12 +219,20 @@ public class NeuralNet {
         return numTroops;
     }
 
+    /**
+     * Give the network its input values for the next decision
+     * @param inputs
+     */
     public void setInputs(float[] inputs) {
         for(int i = 0; i < inputs.length; i++) {
             inputNodes[i].setValue(inputs[i]);
         }
     }
 
+    /**
+     * This iterates through the network and gets the weight of each connection so it can be saved
+     * @return all the weights
+     */
     public float[][][] getWeights() {
         float[][][] weights;
 
@@ -224,8 +254,6 @@ public class NeuralNet {
         for(int i = 0; i < weights[weights.length - 1].length; i ++) {
             weights[weights.length - 1][i] = hiddenToOutput.getWeights()[i];
         }
-
-        //System.out.println(inputToHidden.getWeights()[0][0]);
 
         return weights;
     }

@@ -17,6 +17,10 @@ public class GameBoard extends JPanel{
     int columns = 19;
     int cellSize = 40;
 
+
+    /**
+     * @author Tyler Wilson
+     */
     public GameBoard() {
         setUpGameCells();
 
@@ -29,6 +33,8 @@ public class GameBoard extends JPanel{
                 Point clickPoint = e.getPoint();
 
                 Player currentPlayer = logic.getCurrentPlayer();
+
+                // This whole bit just goes through all the cells to find which one was clicked based on the click point
                 GameCell cellClicked = cells[0][0];
 
                 boolean tileFound = false;
@@ -51,6 +57,7 @@ public class GameBoard extends JPanel{
                     }
                 }
 
+                // Tell the player which tile was clicked
                 currentPlayer.tileClicked(cellClicked);
             }
 
@@ -68,6 +75,13 @@ public class GameBoard extends JPanel{
         });
     }
 
+    /**
+     * @author Tyler Wilson
+     *
+     * Initiates the game cells/game board
+     * Goes through each cell and manually tells it what it is (water, land, etc.)
+     * Uses for-loops to iterate through lines of tiles to cut down on manual code
+     */
     private void setUpGameCells() {
         cells = new GameCell[columns][rows];
 

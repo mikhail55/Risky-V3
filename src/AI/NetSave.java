@@ -18,6 +18,12 @@ public class NetSave {
     public NetSave() { }
 
     // I'M SO SORRY I HATE THE SCARY ARRAY TOO
+    /**
+     * This reads the data of saved neural networks and returns them to be rebuilt
+     *
+     * @param fileName the file in which the data is saved
+     * @return returns te values needed to build neural networks
+     */
     public float[][][][] readNetFile(String fileName) {
         float[][][][] weights = new float[0][0][0][0];
         try {
@@ -44,6 +50,8 @@ public class NetSave {
                 }
             }
 
+            // Failed attempt at reducing the save file size by converting data to bytes. It worked, but didn't reduce
+            // the size of the stored data
 
             /*byte[] bytes = new byte[4];
 
@@ -90,15 +98,27 @@ public class NetSave {
             }
         }
 
+        // Return all the read data
         return weights;
     }
 
+    /**
+     * This saves all the data needed to build neural networks
+     *
+     * @param fileName the file in which the data is saved
+     * @param weights the data from the network (the weight of each node) to be saved
+     */
     public void saveFile(String fileName, float[][][][] weights) {
         try {
             FileWriter fw = new FileWriter(fileName, false);
             BufferedWriter bw = new BufferedWriter(fw);
             PrintWriter outFile = new PrintWriter(bw);
 
+
+            // First layer is which network
+            // Second layer is which layer of weights
+            // Third layer is which node
+            // Fourth layer is each weight
             outFile.println(weights.length);
             for(int k = 0; k < weights.length; k++) {
                 outFile.println(weights[k].length);
@@ -113,6 +133,8 @@ public class NetSave {
                 }
             }
 
+            // Failed attempt at reducing the save file size by converting data to bytes. It worked, but didn't reduce
+            // the size of the stored data
 
             /*byte[] bytes = floatToByteArray(weights.length);
             for(int b = 0; b < 4; b++) {
@@ -155,12 +177,19 @@ public class NetSave {
         }
     }
 
-    private byte[] floatToByteArray(float f) {
+
+    // These were both for the byte thing. Borrowed code to see proof of concept from:
+    // https://stackoverflow.com/questions/14619653/how-to-convert-a-float-into-a-byte-array-and-vice-versa
+
+    // I don't use this code, I'm leaving it in to show the attempt (I also may want to figure it out later)
+
+
+    /*private byte[] floatToByteArray(float f) {
         return ByteBuffer.allocate(4).putFloat(f).array();
     }
 
     private float byteArrayToFloat(byte[] b) {
         ByteBuffer buff = ByteBuffer.wrap(b);
         return buff.getFloat();
-    }
+    } */
 }
