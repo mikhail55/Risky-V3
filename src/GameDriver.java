@@ -37,6 +37,8 @@ public class GameDriver {
         logic.setPlayers(players);
         logic.setGameBoard(board);
 
+        board.setLogic(logic);
+
         // Repaint the program each time taskPerformer is called
         ActionListener taskPerformer = new ActionListener() {
             @Override

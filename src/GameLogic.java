@@ -17,7 +17,6 @@ public class GameLogic {
     private GameBoard gameBoard;
 
     public GameLogic() {
-
     }
 
     public void setGameBoard(GameBoard board) {
