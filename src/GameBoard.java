@@ -121,12 +121,16 @@ public class GameBoard extends JPanel{
 
         //for demonstration purposes only, this is the syntax to create the different colors for the cells
         gameCells[0].setOwnerEndTurn(GameCell.Owner.Team1);
+        gameCells[0].setNumTroops(10);
         gameCells[0].update();
         gameCells[19].setOwnerEndTurn(GameCell.Owner.Team2);
+        gameCells[19].setNumTroops(10);
         gameCells[19].update();
         gameCells[399].setOwnerEndTurn(GameCell.Owner.Team3);
+        gameCells[399].setNumTroops(10);
         gameCells[399].update();
         gameCells[380].setOwnerEndTurn(GameCell.Owner.Team4);
+        gameCells[380].setNumTroops(10);
         gameCells[380].update();
         //demonstration ends here
 
