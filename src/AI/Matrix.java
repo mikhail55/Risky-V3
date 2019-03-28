@@ -49,7 +49,7 @@ class Matrix {
         for (Connection[] connections: matrix) {
             for (Connection connection: connections) {
                 if((float) rand.nextDouble() <= mutationRate) {
-                    connection.newWeight();
+                    connection.mutateWeight();
                 }
             }
         }
@@ -70,6 +70,9 @@ class Matrix {
         }
     }
 
+    /**
+     * @return the weights that are to be saved
+     */
     float[][] getWeights() {
         float[][] weights = new float[matrix.length][];
 

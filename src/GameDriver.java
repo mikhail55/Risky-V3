@@ -5,7 +5,7 @@ import java.awt.event.ActionListener;
 
 public class GameDriver {
     public static void main(String[] args) {
-        final int WIDTH = 760, HEIGHT = 680;
+        final int WIDTH = 761, HEIGHT = 703;
 
         JFrame frame = new JFrame("Risky Man");
 
@@ -25,26 +25,17 @@ public class GameDriver {
 
         board.repaint();
 
-        Player[] players = new Player[2];
+        Player[] players = new Player[4];
 
-        //GameLogic logic = new GameLogic(board.getBoard(), players);
+        GameLogic logic = new GameLogic();
 
-        //players[0] = new Player(GameCell.Owner.Team1, logic);
+        players[0] = new Player(GameCell.Owner.Team1, logic);
+        players[1] = new Player(GameCell.Owner.Team2, logic);
+        players[2] = new Player(GameCell.Owner.Team3, logic);
+        players[3] = new Player(GameCell.Owner.Team4, logic);
 
-        //players[1] = new Player(GameCell.Owner.Team2, logic);
-
-        /*logic.setPlayers(players);
-
-        board.getBoard()[0][1];
-
-        board.getBoard()[0][1].setNumTroops(5);
-        board.getBoard()[0][0].setNumTroops(2);
-        board.getBoard()[1][0].setNumTroops(5);
-        board.getBoard()[1][1].setNumTroops(2);
-
-
-        logic.attack(board.getBoard()[0][1], board.getBoard()[0][0], 5);
-        logic.attack(board.getBoard()[0][1], board.getBoard()[1][1], 5);*/
+        logic.setPlayers(players);
+        logic.setGameBoard(board);
 
         // Repaint the program each time taskPerformer is called
         ActionListener taskPerformer = new ActionListener() {

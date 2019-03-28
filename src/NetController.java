@@ -93,6 +93,8 @@ public class NetController {
 
         int posInInput = 0;
 
+        GameBoard board = logic.getBoard();
+
         inputs[posInInput] = owner.ordinal() + 1;
         posInInput ++;
 
@@ -101,16 +103,16 @@ public class NetController {
             posInInput++;
         }
 
-        for(int i = 0; i < logic.getBoard().length; i++) {
-            for(int n = 0; n < logic.getBoard()[i].length; n++) {
-                inputs[posInInput] = logic.getBoard()[i][n].getOwner().ordinal();
+        for(int i = 0; i < board.getCells().length; i++) {
+            for(int n = 0; n < board.getCells()[i].length; n++) {
+                inputs[posInInput] = board.getCells()[i][n].getOwner().ordinal();
                 posInInput ++;
             }
         }
 
-        for(int i = 0; i < logic.getBoard().length; i++) {
-            for(int n = 0; n < logic.getBoard()[i].length; n++) {
-                inputs[posInInput] = logic.getBoard()[i][n].getNumTroops();
+        for(int i = 0; i < board.getCells().length; i++) {
+            for(int n = 0; n < board.getCells()[i].length; n++) {
+                inputs[posInInput] = board.getCells()[i][n].getNumTroops();
                 posInInput ++;
             }
         }
@@ -121,6 +123,8 @@ public class NetController {
     public void turn() {
         boolean[] moves = getMove();
 
+        GameBoard board = logic.getBoard();
+
         for(int i = 0; i < moves.length - 1; i++) {
             if(moves[i]) {
                 boolean rowFound = false;
@@ -128,18 +132,18 @@ public class NetController {
                 int cellPosInRow;
 
                 while(!rowFound) {
-                    if(((cellRow + 1) * logic.getBoard()[0].length - 1) < i) {
+                    if(((cellRow + 1) * board.getCells()[0].length - 1) < i) {
                         cellRow++;
                     } else {
                         rowFound = true;
                     }
                 }
 
-                cellPosInRow = i - (cellRow * logic.getBoard()[0].length);
+                cellPosInRow = i - (cellRow * board.getCells()[0].length);
 
                 int numTroops = neuralNet.getNumTroops();
 
-                player.tileClicked(logic.getBoard()[cellRow][cellPosInRow], numTroops);
+                player.tileClicked(board.getCells()[cellRow][cellPosInRow], numTroops);
             }
         }
         player.endTurn();
