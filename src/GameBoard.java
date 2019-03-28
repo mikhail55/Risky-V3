@@ -288,5 +288,9 @@ public class GameBoard extends JPanel{
         String averages = CellAvgCalculator();
         page.drawString(averages, 720, 690);
     }
+
+    public void setLogic(GameLogic logic) {
+        this.logic = logic;
+    }
 }
 
