@@ -103,16 +103,24 @@ public class NetController {
             posInInput++;
         }
 
-        for(int i = 0; i < board.getCells().length; i++) {
-            for(int n = 0; n < board.getCells()[i].length; n++) {
-                inputs[posInInput] = board.getCells()[i][n].getOwner().ordinal();
+        GameCell[][] cells = new GameCell[20][20];
+
+        for(int i = 0; i < cells.length; i++) {
+            for(int n = 0; n < cells[i].length; n++) {
+                cells[i][n] = board.getCells()[(i * 20) + n];
+            }
+        }
+
+        for(int i = 0; i < cells.length; i++) {
+            for(int n = 0; n < cells[i].length; n++) {
+                inputs[posInInput] = cells[i][n].getOwner().ordinal();
                 posInInput ++;
             }
         }
 
-        for(int i = 0; i < board.getCells().length; i++) {
-            for(int n = 0; n < board.getCells()[i].length; n++) {
-                inputs[posInInput] = board.getCells()[i][n].getNumTroops();
+        for(int i = 0; i < cells.length; i++) {
+            for(int n = 0; n < cells[i].length; n++) {
+                inputs[posInInput] = cells[i][n].getNumTroops();
                 posInInput ++;
             }
         }
@@ -125,6 +133,14 @@ public class NetController {
 
         GameBoard board = logic.getBoard();
 
+        GameCell[][] cells = new GameCell[20][20];
+
+        for(int i = 0; i < cells.length; i++) {
+            for(int n = 0; n < cells[i].length; n++) {
+                cells[i][n] = board.getCells()[(i * 20) + n];
+            }
+        }
+
         for(int i = 0; i < moves.length - 1; i++) {
             if(moves[i]) {
                 boolean rowFound = false;
@@ -132,18 +148,18 @@ public class NetController {
                 int cellPosInRow;
 
                 while(!rowFound) {
-                    if(((cellRow + 1) * board.getCells()[0].length - 1) < i) {
+                    if(((cellRow + 1) * cells[0].length - 1) < i) {
                         cellRow++;
                     } else {
                         rowFound = true;
                     }
                 }
 
-                cellPosInRow = i - (cellRow * board.getCells()[0].length);
+                cellPosInRow = i - (cellRow * cells[0].length);
 
                 int numTroops = neuralNet.getNumTroops();
 
-                player.tileClicked(board.getCells()[cellRow][cellPosInRow], numTroops);
+                player.tileClicked(cells[cellRow][cellPosInRow], numTroops);
             }
         }
         player.endTurn();

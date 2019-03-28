@@ -13,7 +13,7 @@ import javax.swing.*;
 public class GameBoard extends JPanel{
 
 
-    private GameCell [] gameCells = new GameCell[400];
+    private GameCell[] gameCells = new GameCell[400];
 
     //enum User {
     //    Team1,Team2 ,Team3, Team4,
@@ -102,6 +102,10 @@ public class GameBoard extends JPanel{
             color = Color.pink;
         }
     }*/
+
+    public GameCell[] getCells() {
+        return gameCells;
+    }
 
     /**
      * this function defines all the cells that should be water
