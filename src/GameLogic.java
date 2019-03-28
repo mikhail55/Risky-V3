@@ -1,13 +1,19 @@
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * This class handles the logic of the game
+ * @author Mikhail
+ * @author Mikhail Pyatakhin
+ * @version 1.0
+ * @since 2019-03-28
+ */
+
 public class GameLogic {
 
     private Player currentPlayer;
 
     private Player[] players;
-
-    private RiskyFileReader fileReader;
 
     private GameBoard gameBoard;
 
@@ -19,7 +25,12 @@ public class GameLogic {
         gameBoard = board;
     }
 
-    //moves a set amount of troops from one tile to another if possible
+    /**
+     * moves a set amount of troops from one tile to another if possible
+     * @param from tile that the troops are moved from
+     * @param to tile that the troops are moved to
+     * @param numTroops the amount of troops that are being pushed
+     */
     public void move(GameCell from, GameCell to, int numTroops){
         if (currentPlayer.checkTile(from, to) && checkAdjacent(from, to) && checkAllowed(from)){
             from.setAddedTroops(-numTroops);
@@ -125,22 +136,16 @@ public class GameLogic {
         return false;
     }
 
-    public int getEarnedTroops(){
-        return 0;
-    }
-
     public void endTurn(){
         setNewPlayer();
         for (int i = 0; i < gameBoard.getCells().length; i++){
-            for (int j = 0; j < gameBoard.getCells()[i].length; j++){
                 //updates each tile at the end of each turn
-                gameBoard.getCells()[i][j].update();
+                gameBoard.getCells()[i].update();
 
-                if (gameBoard.getCells()[i][j].getOwner() == currentPlayer.team){
+                if (gameBoard.getCells()[i].getOwner() == currentPlayer.team){
                     //for each tile the player owned at the start of the turn, adds a troop for him to deploy
                     currentPlayer.setDeployableTroops(currentPlayer.getDeployableTroops()+1);
                 }
-            }
         }
 
 
