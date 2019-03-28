@@ -9,6 +9,8 @@
 
 import javax.swing.*;
         import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class GameBoard extends JPanel{
 
@@ -35,7 +37,47 @@ public class GameBoard extends JPanel{
     public GameBoard() {
         //activeUserBackColor();
         //setBackground(color);
+        this.addMouseListener(new MouseListener() {
 
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Get the point where the mouse was clicked
+                Point pressedPoint = e.getPoint();
+                Player currentPlayer = logic.getCurrentPlayer();
+                // This whole bit just goes through all the cells to find which one was clicked based on the click point
+                boolean cellFinder = false;
+                while(!cellFinder){
+                    for (int i = 0; i < 400; i++) {
+                        if (pressedPoint.getX() > 10 * (gameCells[i].getCoordinates().getX()) &&
+                        pressedPoint.getX() < 25 *(gameCells[i].getCoordinates().getX())
+                                && pressedPoint.getY() > 10 * (gameCells[i].getCoordinates().getY())
+                        && pressedPoint.getY()< 25 *(gameCells[i].getCoordinates().getY())){
+
+                        }
+                    }
+                }
+
+
+                // Tell the player which tile was clicked
+                currentPlayer.tileClicked(cellClicked);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
 
 
         /**
@@ -176,5 +218,7 @@ public class GameBoard extends JPanel{
         }//eighteenth line
 
     }
+
+
 }
 
