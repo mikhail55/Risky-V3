@@ -91,7 +91,7 @@ public class NetController {
     }
 
     /**
-     *
+     *This gets all the inputs for the neural network to make a decision
      *
      * @return
      */
@@ -135,6 +135,9 @@ public class NetController {
         return inputs;
     }
 
+    /**
+     * The function that is called each turn
+     */
     public void turn() {
         boolean[] moves = getMove();
 
