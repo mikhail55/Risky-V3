@@ -7,7 +7,7 @@ public class NetController {
     private NeuralNet neuralNet;
     private InputController inputController;
 
-    // Map Size : 19 x 17 cells
+    // Map Size : 20 x 20 cells
 
     // 1 input : What team is the AI
     // 4 inputs : How many troops each player gets per turn
@@ -37,20 +37,6 @@ public class NetController {
     private Player player;
     private GameCell.Owner owner;
     private GameLogic logic;
-
-    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
-    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
-
-    NetController() {
-        neuralNet = new NeuralNet(numInputs, hiddenLayers, numHidden, numOutputs, mutationRate);
-    }
-
-    NetController(float[][][] weights) {
-        neuralNet = new NeuralNet(weights);
-    }
-
-    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
-    // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING // ONLY FOR TESTING
 
 
     NetController(GameCell.Owner owner, GameLogic logic) {

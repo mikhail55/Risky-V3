@@ -34,6 +34,8 @@ public class GameBoard extends JPanel{
 
     private Menu menu;
 
+    int cellSize = 40;
+
     public GameBoard() {
         //activeUserBackColor();
         //setBackground(color);
@@ -57,6 +59,36 @@ public class GameBoard extends JPanel{
                     }
                 }
 
+                GameCell[][] cells2D = new GameCell[20][20];
+
+                for(int i = 0; i < cells2D.length; i++) {
+                    for(int n = 0; n < cells2D[i].length; n++) {
+                        cells2D[i][n] = gameCells[(i * 20) + n];
+                    }
+                }
+
+                // This whole bit just goes through all the cells to find which one was clicked based on the click point
+                GameCell cellClicked = cells2D[0][0];
+
+                boolean tileFound = false;
+
+                int row = 0;
+                int column = 0;
+
+                while(!tileFound) {
+                    if(pressedPoint.getX() > cellSize * (column + 1)) {
+                        column++;
+                    }
+
+                    else if(pressedPoint.getY() > cellSize * (row + 1)) {
+                        row ++;
+                    }
+
+                    else {
+                        tileFound = true;
+                        cellClicked = cells2D[column][row];
+                    }
+                }
 
                 // Tell the player which tile was clicked
                 currentPlayer.tileClicked(cellClicked);
