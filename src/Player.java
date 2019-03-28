@@ -1,5 +1,10 @@
 import javax.swing.*;
 
+/**
+ * @author Mikhail Pyatakhin, Tyler Wilson
+ * @version 1.0
+ * @since 2019-03-28
+ */
 public class Player {
 
     GameCell.Owner team;
@@ -17,7 +22,13 @@ public class Player {
         this.logic = logic;
     }
 
-    //checks if the owners of the tiles are the same
+    /**
+     * checks if the owners of the tiles are the same
+     * @author Mikhail Pyatakhin
+     * @param x
+     * @param y
+     * @return
+     */
     public boolean checkTile(GameCell x, GameCell y){
         if (x.getOwner() == y.getOwner()){
             return true;
@@ -50,7 +61,12 @@ public class Player {
         return numTroops;
     }
 
-    //Checks which tile was clicked and decides what to do
+    /**
+     * Checks which tile was clicked and decides what to do
+     * @author Mikhail Pyatakhin
+     * @param clicked the tile that was last clicked
+     * @param numTroops number of troops that was selected
+     */
     public void tileClicked(GameCell clicked, int numTroops){
         if (!(lastTileChecked == null)){
             //clicked the tile with the same owner = move
@@ -72,29 +88,6 @@ public class Player {
         } else {lastTileChecked = clicked;}
     }
 
-    public void tileClicked(GameCell clicked){
-        if (!(lastTileChecked == null)){
-            //clicked the tile with the same owner = move
-            if (lastTileChecked.getOwner() == clicked.getOwner()){
-                int numTroops = getNumTroops();
-                logic.move(getLastTileChecked(), clicked, numTroops);
-                //reset the selected tile
-                lastTileChecked = null;
-            }
-            //clicked tile with a different owner = attack
-            else if (!(lastTileChecked.getOwner() == clicked.getOwner())){
-                int numTroops = getNumTroops();
-                logic.attack(lastTileChecked, clicked, numTroops);
-                lastTileChecked = null;
-            }
-            //clicked the same tile twice = deploy
-            else if (lastTileChecked == clicked){
-                logic.deploy(clicked);
-                lastTileChecked = null;
-            }
-        } else {lastTileChecked = clicked;}
-    }
-
     public void endTurn(){
         logic.endTurn();
     }
@@ -103,9 +96,7 @@ public class Player {
         return lastTileChecked;
     }
 
-    public int getDeployableTroops() {
-        return deployableTroops;
-    }
+    public int getDeployableTroops() { return deployableTroops; }
 
     public void setDeployableTroops(int deployableTroops) {
         this.deployableTroops = deployableTroops;

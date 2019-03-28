@@ -3,7 +3,6 @@ import java.util.Random;
 
 /**
  * This class handles the logic of the game
- * @author Mikhail
  * @author Mikhail Pyatakhin
  * @version 1.0
  * @since 2019-03-28
@@ -39,6 +38,12 @@ public class GameLogic {
         }
     }
 
+    /**
+     * This method is used when attacking the enemy
+     * @param attacker the cell that the troops attack from
+     * @param defender the cell that defends from the attackers
+     * @param numTroops the number of troops that attack
+     */
     public void attack(GameCell attacker, GameCell defender, int numTroops){
         if (!currentPlayer.checkTile(attacker, defender) && checkAdjacent(attacker, defender) && checkAllowed(attacker) && attacker.getNumTroops() > defender.getNumTroops()){
 
@@ -71,7 +76,6 @@ public class GameLogic {
                         //that attacker roll is removed
                         rolledNumAtt.remove(j);
 
-//                        defender.setAddedTroops(-1);
                         killedDef++;
                         break;
                     } else if (j == rolledNumAtt.size()-1){
@@ -102,6 +106,10 @@ public class GameLogic {
         }
     }
 
+    /**
+     *This method is used to roll a virtual dice
+     * @return returns the result for the roll
+     */
     private int rollDice(){
         Random rand = new Random();
         return rand.nextInt(6) + 1;
@@ -111,12 +119,20 @@ public class GameLogic {
         return gameBoard;
     }
 
-    //deploys one troop on a selected tile
+    /**
+     * deploys one troop on a selected tile
+     * @param selectedCell the cells that the troops are being deployed to
+     */
     public  void deploy(GameCell selectedCell){
         selectedCell.setNumTroops(selectedCell.getNumTroops()+1);
     }
 
-    //checks if two tiles are adjacent to each other
+    /**
+     * checks if two tiles are adjacent to each other
+     * @param origin the tile that the troops are moved from
+     * @param destination the tile that the troops are being moved to
+     * @return returns true if they are and false if they are not
+     */
     private boolean checkAdjacent(GameCell origin, GameCell destination){
 
         if ((destination.getCoordinates().x == origin.getCoordinates().x+1) || (destination.getCoordinates().x == origin.getCoordinates().x+1)){
@@ -128,7 +144,11 @@ public class GameLogic {
         return false;
     }
 
-    //checks if the player is allowed to perform actions with a selected tile
+    /**
+     * checks if the player is allowed to perform actions with a selected tile
+     * @param selected the tile that is selected
+     * @return returns true if the player is the owner and false if he is not
+     */
     private boolean checkAllowed(GameCell selected){
         if (selected.getOwner() == currentPlayer.team){
             return true;
@@ -136,6 +156,9 @@ public class GameLogic {
         return false;
     }
 
+    /**
+     * This function gets called at the end of the turn to update the board
+     */
     public void endTurn(){
         setNewPlayer();
         for (int i = 0; i < gameBoard.getCells().length; i++){
@@ -151,6 +174,9 @@ public class GameLogic {
 
     }
 
+    /**
+     * This function changes the currentPlayer at the end of the turn
+     */
     private void setNewPlayer(){
         if (currentPlayer == players[0]){
             currentPlayer = players[1];
@@ -164,16 +190,10 @@ public class GameLogic {
         else { currentPlayer = players[0];}
     }
 
-    public Player[] getPlayers() {
-        return players;
-    }
+    public Player[] getPlayers() { return players; }
 
     public void setPlayers(Player[] players) {
         this.players = players;
         currentPlayer = players[0];
-    }
-
-    public Player getCurrentPlayer() {
-        return currentPlayer;
     }
 }
