@@ -274,16 +274,16 @@ public class GameBoard extends JPanel{
            if (cellOwner == GameCell.Owner.Team4){
                player4Cells++;
            }
-           else {
+           if (cellOwner == GameCell.Owner.notTaken){
                notTakenCells++;
            }
         }
 
-        String finalAverages = "Cells owned by player 1: "+((player1Cells*100)/400)+"\n" +
-                "Cells owned by player 2:"+((player2Cells*100)/400)+"\n" +
-                "Cells owned by player 3: "+((player3Cells*100)/400)+"\n"+
-                "Cells owned by player 4: "+((player4Cells*100)/400)+"\n"+
-                "Cells Not Owned: "+((notTakenCells*100)/400)+"\n";
+        String finalAverages = "Player 1 cells: "+player1Cells+"\n" +
+                "  Player 2 cells:"+player2Cells+"\n" +
+                "  Player 3 cells: "+player3Cells+"\n"+
+                "  Player 4 cells: "+player4Cells+"\n"+
+                "  Cells Not Owned: "+notTakenCells+"\n";
 
         return finalAverages;
     }
@@ -291,7 +291,7 @@ public class GameBoard extends JPanel{
     private void averagesDraw (Graphics page){
         String averages = CellAvgCalculator();
         page.setColor(Color.BLACK);
-        page.drawString(averages, 500, 20);
+        page.drawString(averages, 10, 600);
     }
 
     public void setLogic(GameLogic logic) {

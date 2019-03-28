@@ -115,6 +115,7 @@ public class GameCell {
         }
         else if(isWater == true){
             color = Color.CYAN;
+            numTroops =0;
         }
 
         page.setColor(color);
