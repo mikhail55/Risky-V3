@@ -34,7 +34,7 @@ public class GameBoard extends JPanel{
 
     private Menu menu;
 
-    int cellSize = 40;
+    int cellSize = 25;
 
     public GameBoard() {
         //activeUserBackColor();
@@ -48,16 +48,6 @@ public class GameBoard extends JPanel{
                 Player currentPlayer = logic.getCurrentPlayer();
                 // This whole bit just goes through all the cells to find which one was clicked based on the click point
                 boolean cellFinder = false;
-                while(!cellFinder){
-                    for (int i = 0; i < 400; i++) {
-                        if (pressedPoint.getX() > 10 * (gameCells[i].getCoordinates().getX()) &&
-                        pressedPoint.getX() < 25 *(gameCells[i].getCoordinates().getX())
-                                && pressedPoint.getY() > 10 * (gameCells[i].getCoordinates().getY())
-                        && pressedPoint.getY()< 25 *(gameCells[i].getCoordinates().getY())){
-
-                        }
-                    }
-                }
 
                 GameCell[][] cells2D = new GameCell[20][20];
 
@@ -148,6 +138,7 @@ public class GameBoard extends JPanel{
         for (int i = 0; i < 400; i++) {
             gameCells[i].cellDraw(g);
         }
+        averagesDraw(g);
     }
 
     /**
@@ -251,6 +242,51 @@ public class GameBoard extends JPanel{
 
     }
 
+    /**
+     * this method is used to show the average of the board that each player has
+     * @return
+     */
+    private String CellAvgCalculator (){
+        int player1Cells = 0;
+        int player2Cells = 0;
+        int player3Cells = 0;
+        int player4Cells = 0;
+        int notTakenCells = 0;
 
+        GameCell.Owner cellOwner;
+
+        for (int i = 0; i<400; i++){
+           cellOwner  = gameCells[i].getOwner();
+
+           if (cellOwner == GameCell.Owner.Team1){
+               player1Cells++;
+           }
+           if (cellOwner == GameCell.Owner.Team2){
+               player2Cells++;
+           }
+           if (cellOwner == GameCell.Owner.Team3){
+               player3Cells++;
+           }
+           if (cellOwner == GameCell.Owner.Team4){
+               player4Cells++;
+           }
+           else {
+               notTakenCells++;
+           }
+        }
+
+        String finalAverages = "Cells owned by player 1: "+((player1Cells*100)/400)+"\n" +
+                "Cells owned by player 2:"+((player2Cells*100)/400)+"\n" +
+                "Cells owned by player 3: "+((player3Cells*100)/400)+"\n"+
+                "Cells owned by player 4: "+((player4Cells*100)/400)+"\n"+
+                "Cells Not Owned: "+((notTakenCells*100)/400)+"\n";
+
+        return finalAverages;
+    }
+
+    private void averagesDraw (Graphics page){
+        String averages = CellAvgCalculator();
+        page.drawString(averages, 720, 690);
+    }
 }
 
