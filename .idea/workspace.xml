@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="41fa5018-73fb-4b63-9a9c-3174bdf7a666" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NeuralTrainer.java" afterPath="$PROJECT_DIR$/src/NeuralTrainer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,17 +27,10 @@
       <file leaf-file-name="GameLogic.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameLogic.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="266">
-              <caret line="141" column="57" lean-forward="true" selection-start-line="141" selection-start-column="57" selection-end-line="141" selection-end-column="57" />
+            <state relative-caret-position="611">
+              <caret line="164" column="57" lean-forward="true" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
               <folding>
-                <element signature="e#397#398#0" expanded="true" />
-                <element signature="e#430#431#0" expanded="true" />
-                <element signature="e#3847#3848#0" expanded="true" />
-                <element signature="e#3879#3880#0" expanded="true" />
-                <element signature="e#3971#3972#0" expanded="true" />
-                <element signature="e#4043#4044#0" expanded="true" />
-                <marker date="1553776661000" expanded="false" signature="5761:5772" ph=" { " />
-                <marker date="1553776661000" expanded="false" signature="5787:5793" ph=" }" />
+                <marker date="1553778376000" expanded="true" signature="54:120" ph="/**...*/" />
               </folding>
             </state>
           </provider>
@@ -61,7 +53,7 @@
         <entry file="file://$PROJECT_DIR$/src/NeuralTrainer.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="210">
-              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+              <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -189,9 +181,8 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="false" />
           <option name="myId" value="UPDATED" />
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/.idea/workspace.xml</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/GameBoard.java</PATH>
-          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Menu.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/GameLogic.java</PATH>
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/Player.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Created" />
@@ -206,6 +197,7 @@
           <option name="mySupportsDeletion" value="false" />
           <option name="myCanBeAbsent" value="true" />
           <option name="myId" value="REMOVED_FROM_REPOSITORY" />
+          <PATH vcs="Git" revision="">$PROJECT_DIR$/src/RiskyFileReader.java</PATH>
         </FILE-GROUP>
         <FILE-GROUP>
           <option name="myUpdateName" value="Restored" />
@@ -525,7 +517,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553777021457</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary="Fixed net trainer">
+      <created>1553778360429</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1553778360429</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -577,7 +576,8 @@
     <MESSAGE value="Finished up neural save function" />
     <MESSAGE value="Fixed net controller errors after the great push purge" />
     <MESSAGE value="Added click detection" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added click detection" />
+    <MESSAGE value="Fixed net trainer" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed net trainer" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -644,14 +644,7 @@
         <state relative-caret-position="285">
           <caret line="22" column="16" lean-forward="false" selection-start-line="22" selection-start-column="16" selection-end-line="22" selection-end-column="16" />
           <folding>
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#3847#3848#0" expanded="true" />
-            <element signature="e#3879#3880#0" expanded="true" />
-            <element signature="e#3971#3972#0" expanded="true" />
-            <element signature="e#4043#4044#0" expanded="true" />
-            <marker date="1553776661000" expanded="false" signature="5761:5772" ph=" { " />
-            <marker date="1553776661000" expanded="false" signature="5787:5793" ph=" }" />
+            <marker date="1553778376000" expanded="true" signature="54:120" ph="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -994,17 +987,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/GameLogic.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="266">
-          <caret line="141" column="57" lean-forward="true" selection-start-line="141" selection-start-column="57" selection-end-line="141" selection-end-column="57" />
+        <state relative-caret-position="611">
+          <caret line="164" column="57" lean-forward="true" selection-start-line="164" selection-start-column="57" selection-end-line="164" selection-end-column="57" />
           <folding>
-            <element signature="e#397#398#0" expanded="true" />
-            <element signature="e#430#431#0" expanded="true" />
-            <element signature="e#3847#3848#0" expanded="true" />
-            <element signature="e#3879#3880#0" expanded="true" />
-            <element signature="e#3971#3972#0" expanded="true" />
-            <element signature="e#4043#4044#0" expanded="true" />
-            <marker date="1553776661000" expanded="false" signature="5761:5772" ph=" { " />
-            <marker date="1553776661000" expanded="false" signature="5787:5793" ph=" }" />
+            <marker date="1553778376000" expanded="true" signature="54:120" ph="/**...*/" />
           </folding>
         </state>
       </provider>
@@ -1041,7 +1027,7 @@
     <entry file="file://$PROJECT_DIR$/src/NeuralTrainer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="210">
-          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <caret line="14" column="41" lean-forward="false" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
           <folding />
         </state>
       </provider>
