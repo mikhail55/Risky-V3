@@ -9,6 +9,8 @@
 
 import javax.swing.*;
         import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class GameBoard extends JPanel{
 
@@ -32,10 +34,82 @@ public class GameBoard extends JPanel{
 
     private Menu menu;
 
+    int cellSize = 40;
+
     public GameBoard() {
         //activeUserBackColor();
         //setBackground(color);
+        this.addMouseListener(new MouseListener() {
 
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                // Get the point where the mouse was clicked
+                Point pressedPoint = e.getPoint();
+                Player currentPlayer = logic.getCurrentPlayer();
+                // This whole bit just goes through all the cells to find which one was clicked based on the click point
+                boolean cellFinder = false;
+                while(!cellFinder){
+                    for (int i = 0; i < 400; i++) {
+                        if (pressedPoint.getX() > 10 * (gameCells[i].getCoordinates().getX()) &&
+                        pressedPoint.getX() < 25 *(gameCells[i].getCoordinates().getX())
+                                && pressedPoint.getY() > 10 * (gameCells[i].getCoordinates().getY())
+                        && pressedPoint.getY()< 25 *(gameCells[i].getCoordinates().getY())){
+
+                        }
+                    }
+                }
+
+                GameCell[][] cells2D = new GameCell[20][20];
+
+                for(int i = 0; i < cells2D.length; i++) {
+                    for(int n = 0; n < cells2D[i].length; n++) {
+                        cells2D[i][n] = gameCells[(i * 20) + n];
+                    }
+                }
+
+                // This whole bit just goes through all the cells to find which one was clicked based on the click point
+                GameCell cellClicked = cells2D[0][0];
+
+                boolean tileFound = false;
+
+                int row = 0;
+                int column = 0;
+
+                while(!tileFound) {
+                    if(pressedPoint.getX() > cellSize * (column + 1)) {
+                        column++;
+                    }
+
+                    else if(pressedPoint.getY() > cellSize * (row + 1)) {
+                        row ++;
+                    }
+
+                    else {
+                        tileFound = true;
+                        cellClicked = cells2D[column][row];
+                    }
+                }
+
+                // Tell the player which tile was clicked
+                currentPlayer.tileClicked(cellClicked);
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+            }
+        });
 
 
         /**
@@ -176,5 +250,7 @@ public class GameBoard extends JPanel{
         }//eighteenth line
 
     }
+
+
 }
 
