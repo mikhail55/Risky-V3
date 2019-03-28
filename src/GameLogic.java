@@ -17,7 +17,6 @@ public class GameLogic {
     private GameBoard gameBoard;
 
     public GameLogic() {
-        currentPlayer = players[0];
     }
 
     public void setGameBoard(GameBoard board) {
