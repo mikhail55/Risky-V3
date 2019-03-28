@@ -34,7 +34,7 @@ public class GameBoard extends JPanel{
 
     private Menu menu;
 
-    int cellSize = 25;
+    int cellSize = 26;
 
     public GameBoard() {
         //activeUserBackColor();
@@ -286,7 +286,8 @@ public class GameBoard extends JPanel{
 
     private void averagesDraw (Graphics page){
         String averages = CellAvgCalculator();
-        page.drawString(averages, 720, 690);
+        page.setColor(Color.BLACK);
+        page.drawString(averages, 500, 20);
     }
 
     public void setLogic(GameLogic logic) {
