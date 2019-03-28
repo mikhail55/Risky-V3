@@ -88,6 +88,30 @@ public class Player {
         } else {lastTileChecked = clicked;}
     }
 
+    //same as the one above, but with different parameters
+    public void tileClicked(GameCell clicked){
+        if (!(lastTileChecked == null)){
+            //clicked the tile with the same owner = move
+            if (lastTileChecked.getOwner() == clicked.getOwner()){
+                int numTroops = getNumTroops();
+                logic.move(getLastTileChecked(), clicked, numTroops);
+                //reset the selected tile
+                lastTileChecked = null;
+            }
+            //clicked tile with a different owner = attack
+            else if (!(lastTileChecked.getOwner() == clicked.getOwner())){
+                int numTroops = getNumTroops();
+                logic.attack(lastTileChecked, clicked, numTroops);
+                lastTileChecked = null;
+            }
+            //clicked the same tile twice = deploy
+            else if (lastTileChecked == clicked){
+                logic.deploy(clicked);
+                lastTileChecked = null;
+            }
+        } else {lastTileChecked = clicked;}
+    }
+
     public void endTurn(){
         logic.endTurn();
     }
