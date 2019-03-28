@@ -16,7 +16,7 @@ public class NeuralTrainer {
         NetSave netSave = new NetSave();
 
         // These two functions were used to create/read neural networks (they were alternated)
-        NetController netController = new NetController(netSave.readNetFile(fileName)[0]);
+        NetController netController = new NetController(netSave.readNetFile(fileName)[0], GameCell.Owner.Team1, new GameLogic());
         //NetController netController = new NetController();
 
         // Gets data that had been read/created from/in the neural network

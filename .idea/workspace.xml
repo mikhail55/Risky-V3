@@ -3,8 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="41fa5018-73fb-4b63-9a9c-3174bdf7a666" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/GameBoard.java" afterPath="$PROJECT_DIR$/src/GameBoard.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NetController.java" afterPath="$PROJECT_DIR$/src/NetController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/NeuralTrainer.java" afterPath="$PROJECT_DIR$/src/NeuralTrainer.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -45,13 +44,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GameBoard.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GameBoard.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/GameBoard.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="147">
-              <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+              <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
               <folding>
                 <element signature="n#!!doc" expanded="true" />
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NeuralTrainer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/NeuralTrainer.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="NetSave.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/AI/NetSave.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1510">
+              <caret line="186" column="6" lean-forward="false" selection-start-line="186" selection-start-column="6" selection-end-line="186" selection-end-column="6" />
+              <folding>
                 <element signature="imports" expanded="true" />
               </folding>
             </state>
@@ -61,7 +82,7 @@
       <file leaf-file-name="NetController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/NetController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="326">
+            <state relative-caret-position="718">
               <caret line="81" column="43" lean-forward="true" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
               <folding />
             </state>
@@ -89,7 +110,6 @@
       <list>
         <option value="$PROJECT_DIR$/src/GameDriver.java" />
         <option value="$PROJECT_DIR$/src/GameCell.java" />
-        <option value="$PROJECT_DIR$/src/NeuralTrainer.java" />
         <option value="$PROJECT_DIR$/src/AI/NetSave.java" />
         <option value="$PROJECT_DIR$/src/AI/Connection.java" />
         <option value="$PROJECT_DIR$/src/AI/InputController.java" />
@@ -99,6 +119,7 @@
         <option value="$PROJECT_DIR$/src/GameLogic.java" />
         <option value="$PROJECT_DIR$/src/NetController.java" />
         <option value="$PROJECT_DIR$/src/GameBoard.java" />
+        <option value="$PROJECT_DIR$/src/NeuralTrainer.java" />
       </list>
     </option>
   </component>
@@ -497,7 +518,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553776426168</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="Added click detection">
+      <created>1553777021457</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1553777021457</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -548,7 +576,8 @@
     <MESSAGE value="Reset neural network save function to before the byte-pocalypse" />
     <MESSAGE value="Finished up neural save function" />
     <MESSAGE value="Fixed net controller errors after the great push purge" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed net controller errors after the great push purge" />
+    <MESSAGE value="Added click detection" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added click detection" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -905,16 +934,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/AI/NetSave.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2649">
-          <caret line="186" column="6" lean-forward="false" selection-start-line="186" selection-start-column="6" selection-end-line="186" selection-end-column="6" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/RiskyFileReader.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="30">
@@ -965,14 +984,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/NeuralTrainer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="420">
-          <caret line="28" column="35" lean-forward="false" selection-start-line="28" selection-start-column="35" selection-end-line="28" selection-end-column="35" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/GameCell.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="373">
@@ -998,22 +1009,40 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/GameBoard.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/NetController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="326">
+        <state relative-caret-position="718">
           <caret line="81" column="43" lean-forward="true" selection-start-line="81" selection-start-column="43" selection-end-line="81" selection-end-column="43" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/GameBoard.java">
+    <entry file="file://$PROJECT_DIR$/src/AI/NetSave.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="147">
-          <caret line="35" column="4" lean-forward="false" selection-start-line="35" selection-start-column="4" selection-end-line="35" selection-end-column="4" />
+        <state relative-caret-position="1510">
+          <caret line="186" column="6" lean-forward="false" selection-start-line="186" selection-start-column="6" selection-end-line="186" selection-end-column="6" />
           <folding>
-            <element signature="n#!!doc" expanded="true" />
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/NeuralTrainer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="14" column="41" lean-forward="true" selection-start-line="14" selection-start-column="41" selection-end-line="14" selection-end-column="41" />
+          <folding />
         </state>
       </provider>
     </entry>
